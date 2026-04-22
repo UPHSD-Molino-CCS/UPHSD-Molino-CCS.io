@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title Defense Process Flowchart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            box-sizing: border-box;
+        }
+
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFF5F7 0%, #F5F5F5 100%);
+            padding: 3rem 1.5rem;
+            font-family: 'Crimson Text', 'Georgia', serif;
+        }
+
+        /* Header Section */
+        .header-section {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .header-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: #8B1538;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        .header-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* Flowchart Grid */
+        .flowchart-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .phase-column {
+            position: relative;
+            animation: slideIn 0.6s ease-out backwards;
+        }
+
+        .phase-column:nth-child(1) { animation-delay: 0s; }
+        .phase-column:nth-child(2) { animation-delay: 0.15s; }
+        .phase-column:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Phase Styling via CSS Variables mapped in HTML */
+        .phase-header {
+            background: var(--theme-bg);
+            color: var(--theme-text);
+            padding: 1.5rem;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .phase-header h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            letter-spacing: 0.01em;
+        }
+
+        .steps-container {
+            background: #FFFFFF;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .step-card {
+            padding: 1.5rem;
+            border-bottom: 1px solid #E5E7EB;
+            position: relative;
+            transition: background 0.3s ease;
+        }
+
+        .step-card:last-child {
+            border-bottom: none;
+        }
+
+        .step-card:hover {
+            background: var(--theme-lighter);
+        }
+
+        .step-number {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--theme-bg);
+            color: var(--theme-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            font-family: 'Open Sans', sans-serif;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .step-content-wrapper {
+            margin-left: 52px;
+        }
+
+        .step-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin: 0 0 0.5rem 0;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .step-desc {
+            font-size: 0.95rem;
+            color: #555;
+            margin: 0 0 0.75rem 0;
+            line-height: 1.6;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* Badges & Special Data Displays */
+        .badge-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--theme-lighter);
+            color: var(--theme-bg);
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Open Sans', sans-serif;
+            margin-top: 0.5rem;
+        }
+
+        .lucide-small {
+            width: 14px;
+            height: 14px;
+        }
+
+        .box-url {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background: #F9FAFB;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #2563EB;
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+        }
+
+        .box-email {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background: #F9FAFB;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .email-item {
+            color: #2563EB;
+            margin-bottom: 0.25rem;
+        }
+        .email-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .badge-important {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background: var(--theme-lighter);
+            border-left: 4px solid var(--theme-bg);
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #1A1A1A;
+            font-weight: 500;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .box-location {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background: #FEF3C7;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #92400E;
+            font-weight: 500;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .box-warning {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background: #FEE2E2;
+            border: 2px solid #DC2626;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #991B1B;
+            font-weight: 600;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .substeps-list {
+            margin-top: 0.75rem;
+            padding-left: 1.5rem;
+            font-size: 0.9rem;
+            color: #555;
+            font-family: 'Open Sans', sans-serif;
+            margin-bottom: 0;
+        }
+
+        .substeps-list li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        .substeps-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Footer Notes */
+        .footer-notes {
+            max-width: 1400px;
+            margin: 4rem auto 0;
+            padding: 2rem;
+            background: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-left: 4px solid #8B1538;
+        }
+
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #8B1538;
+            margin: 0 0 1rem 0;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .footer-list {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+            font-family: 'Open Sans', sans-serif;
+            padding-left: 1.5rem;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-section">
+        <h1 class="header-title">Title Defense Process Flowchart</h1>
+        <p class="header-subtitle">
+            University of Perpetual Help System DALTA - Molino Campus<br/>
+            College of Computer Studies | BSCS & BSIT Programs
+        </p>
+    </div>
+
+    <div class="flowchart-container">
+        
+        <div class="phase-column" style="--theme-bg: #8B1538; --theme-text: #FFFFFF; --theme-lighter: #FFE5EC;">
+            <div class="phase-header">
+                <i data-lucide="calendar" style="width: 32px; height: 32px; stroke-width: 2.5px;"></i>
+                <h2>Before May 11</h2>
+            </div>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content-wrapper">
+                        <h3 class="step-title">Apply via Google Forms</h3>
+                        <p class="step-desc">Project Manager (IT) / Principal Researcher (CS)</p>
+                        <div class="badge-time"><i data-lucide="clock" class="lucide-small"></i> May 1 (Friday)</div>
+                        <div class="box-url">🔗 https://tinyurl.com/ccstitledefense</div>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content-wrapper">
+                        <h3 class="step-title">Pay Title Defense Fee</h3>
+                        <p class="step-desc">Php 300 per member to CCS office (Ma'am Febie)</p>
+                        <div class="badge-time"><i data-lucide="clock" class="lucide-small"></i> May 7 (Thursday)</div>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content-wrapper">
+                        <h3 class="step-title">Submit Printed Documentation</h3>
+                        <p class="step-desc">Ring-bound to CCS office (Sir Val)</p>
+                        <div class="badge-time"><i data-lucide="clock" class="lucide-small"></i> May 7 (Thursday)</div>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-content-wrapper">
+                        <h3 class="step-title">Email Presentation File</h3>
+                        <p class="step-desc">PowerPoint/Canva to Sir Val</p>
+                        <div class="badge-time"><i data-lucide="clock" class="lucide-small"></i> May 7 (Thursday)</div>
+                        <div class="box-email">
+                            <div class="email-item">📧 valpatrick.fabregas@perpetual.edu.ph</div>
+                            <div class="email-item">📧 val.fabregas@gmail.com</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <div class="step-content-wrapper">
+                        <h3 class="step-title">Wait for Schedule Confirmation</h3>
+                        <p class="step-desc">Email reply expected</p>
+                        <div class="badge-time"><i data-lucide="clock" class="lucide-small"></i> May 8 (Friday)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-column" style="--theme-bg: #D4A017; --theme-text: #1A1A1A; --theme-lighter: #FFF9E6;">
+            <div class="phase-header">
+                <i data-lucide="users" style="width: 32px; height: 32px; stroke-width: 2.5px;"></i>
+                <h2>On May 11</h2>
+            </div>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content-wrapper">
+                        <h3 class="step-title">Professional Corporate Attire</h3>
+                        <p class="step-desc">Required dress code for all members</p>
+                        <div class="badge-important">✓ Required</div>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content-wrapper">
+                        <h3 class="step-title">Arrive at Staging Area</h3>
+                        <p class="step-desc">M-202, 2 hours before presentation. Groups 1 & 2 arrive at 7am</p>
+                        <div class="box-location">📍 Defense: M-210 (BSIT) / M-209 (BSCS) at 8am</div>
+                        <div class="box-warning">⚠️ Late arrival = No presentation = Non-enrollment</div>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content-wrapper">
+                        <h3 class="step-title">Sign Attendance & Get Nametag</h3>
+                        <p class="step-desc">Check-in with Sir Val</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-content-wrapper">
+                        <h3 class="step-title">Present Your Title</h3>
+                        <p class="step-desc">5 minutes per title</p>
+                        <div class="badge-time"><i data-lucide="clock" class="lucide-small"></i> Duration: 5 min</div>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <div class="step-content-wrapper">
+                        <h3 class="step-title">Wait for Approval</h3>
+                        <p class="step-desc">Panelist deliberation for final approved title</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">6</div>
+                    <div class="step-content-wrapper">
+                        <h3 class="step-title">Photo Opportunity</h3>
+                        <p class="step-desc">Group photo after deliberation</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">7</div>
+                    <div class="step-content-wrapper">
+                        <h3 class="step-title">Claim Agreement Form</h3>
+                        <p class="step-desc">Capstone/Thesis Agreement Form from Sir Val</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-column" style="--theme-bg: #2D7A3E; --theme-text: #FFFFFF; --theme-lighter: #E8F5E9;">
+            <div class="phase-header">
+                <i data-lucide="check-circle" style="width: 32px; height: 32px; stroke-width: 2.5px;"></i>
+                <h2>After May 11</h2>
+            </div>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content-wrapper">
+                        <h3 class="step-title">Proceed with Summer Enrollment</h3>
+                        <p class="step-desc">CCS Department will confirm required forms:</p>
+                        <ul class="substeps-list">
+                            <li>Capstone/Thesis Agreement Form (signed by members & parents/guardians)</li>
+                            <li>Completely signed enrollment clearance</li>
+                            <li>Completely filled-out and signed pre-enrollment form</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content-wrapper">
+                        <h3 class="step-title">Summer Classes Begin</h3>
+                        <p class="step-desc">Start date</p>
+                        <div class="badge-time"><i data-lucide="clock" class="lucide-small"></i> May 18</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-notes">
+        <h3 class="footer-title">Important Reminders</h3>
+        <ul class="footer-list">
+            <li><strong>Group Composition:</strong> Teams of 2-4 members as per CHED CMO No. 25, Series of 2015</li>
+            <li><strong>BSCS (Thesis):</strong> Research-oriented, discovery of new knowledge/algorithms</li>
+            <li><strong>BSIT (Capstone):</strong> Application-oriented, solving specific client/industry problems</li>
+            <li><strong>Strict Attendance:</strong> Sir Val will enforce arrival times - late groups cannot present</li>
+            <li><strong>Contact:</strong> Sir Val (valpatrick.fabregas@perpetual.edu.ph / val.fabregas@gmail.com)</li>
+        </ul>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
