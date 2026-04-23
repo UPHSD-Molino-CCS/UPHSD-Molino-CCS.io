@@ -560,7 +560,8 @@
     }
     .program-table tbody td:nth-child(2) { font-weight: 500; }
     .program-table tbody td:last-child { color: var(--text-muted); font-size: 0.83rem; }
-    /*.program-table tbody tr:nth-child(even) td:first-child ~ td { } */
+    .program-table tbody tr:nth-child(even) td:first-child ~ td { }
+
     /* =============================================
        REQUIREMENTS SECTION
     ============================================= */
@@ -710,6 +711,142 @@
     }
 
     /* =============================================
+       QUICK LINKS / RESOURCES SECTION
+    ============================================= */
+    .resources-section {
+      margin-bottom: 60px;
+    }
+
+    .resource-links-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    /* Each big link card */
+    .resource-link-card {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      text-decoration: none;
+      transition: box-shadow 0.25s, transform 0.25s;
+      position: relative;
+    }
+    .resource-link-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+    .resource-link-card:hover .rlc-arrow {
+      transform: translateX(4px);
+    }
+
+    /* Colored left accent strip */
+    .rlc-stripe {
+      width: 6px;
+      flex-shrink: 0;
+    }
+    .rlc-stripe.flowchart { background: var(--navy); }
+    .rlc-stripe.drive     { background: var(--gold); }
+
+    /* Icon column */
+    .rlc-icon-col {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 20px;
+      flex-shrink: 0;
+    }
+    .rlc-icon-wrap {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .rlc-icon-wrap.flowchart {
+      background: rgba(0,33,71,0.08);
+      color: var(--navy);
+    }
+    .rlc-icon-wrap.drive {
+      background: rgba(212,160,23,0.12);
+      color: var(--gold);
+    }
+
+    /* Text body */
+    .rlc-body {
+      padding: 22px 16px 22px 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+    }
+    .rlc-tag {
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .rlc-tag.flowchart { color: var(--navy); }
+    .rlc-tag.drive     { color: var(--gold); }
+
+    .rlc-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.25;
+    }
+    .rlc-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+    .rlc-url {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      opacity: 0.7;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 320px;
+    }
+
+    /* Arrow chevron */
+    .rlc-arrow-col {
+      display: flex;
+      align-items: center;
+      padding: 0 18px 0 8px;
+      flex-shrink: 0;
+    }
+    .rlc-arrow {
+      font-size: 1rem;
+      color: var(--border);
+      transition: transform 0.2s, color 0.2s;
+    }
+    .resource-link-card:hover .rlc-arrow { color: var(--gold); }
+
+    /* "NEW" badge */
+    .rlc-badge {
+      position: absolute;
+      top: 12px; right: 12px;
+      background: var(--navy);
+      color: var(--gold-light);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+
+    /* =============================================
        RESPONSIVE
     ============================================= */
     @media (max-width: 768px) {
@@ -735,6 +872,8 @@
       .program-table { font-size: 0.8rem; }
       .program-table thead th,
       .program-table tbody td { padding: 10px 12px; }
+      .resource-links-grid { grid-template-columns: 1fr; }
+      .rlc-url { display: none; }
     }
   </style>
 </head>
@@ -778,6 +917,7 @@
         <a href="#event-details">Event Details</a>
         <a href="#program">Program</a>
         <a href="#requirements">Requirements</a>
+        <a href="#resources">Resources</a>
         <a href="#contact">Contact</a>
         <a href="https://perpetualdalta.edu.ph/new/college-of-computer-studies-mol/" target="_blank" class="nav-cta">CCS Page</a>
       </nav>
@@ -950,12 +1090,12 @@
       <div class="two-col">
         <div class="card">
           <div class="card-icon"><i class="fas fa-scroll"></i></div>
-          <h3>Discussion of CCS Research Agenda</h3>
+          <h3>Documentation &amp; Guidelines</h3>
           <ul>
-            <li>Focus on AI-driven, innovative, and industry-aligned research addressing real-world problems.</li>
-            <li>Develop ethical, inclusive, and impactful technology solutions (AI, games, data science, etc.).</li>
-            <li>Align projects with key sectors: health, business, technology, environment, education, and governance.</li>
-            <li>Produce practical outputs and future-ready skills through research, innovation, and collaboration.</li>
+            <li>Thesis and Capstone documentation structure overview</li>
+            <li>UPHSD thesis template walkthrough (Chapter 1–4)</li>
+            <li>Required appendices and certification forms</li>
+            <li>Abstract writing guidelines (190–210 words)</li>
           </ul>
         </div>
         <div class="card">
@@ -985,7 +1125,7 @@
             <li>Forming your research group (2–4 members)</li>
             <li>Title proposal format and submission process</li>
             <li>Scope differentiation: BSIT Capstone vs. BSCS Thesis</li>
-            <li>Capstone/ Thesis Agreement Form</li>
+            <li>Ethics clearance and AI declaration requirements</li>
           </ul>
         </div>
       </div>
@@ -1002,44 +1142,54 @@
             <tr>
               <th>Time</th>
               <th>Activity</th>
+              <th>Presenter / Person-in-Charge</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>8:45 AM</td>
               <td>Arrival and Registration of Attendees</td>
+              <td>CCS Student Affairs Officer</td>
             </tr>
             <tr>
               <td>9:00 AM</td>
               <td>Opening Prayer &amp; Philippine National Anthem</td>
+              <td>Designated Student Representative</td>
             </tr>
             <tr>
               <td>9:10 AM</td>
               <td>Welcome Remarks</td>
+              <td>OIC Dean, College of Computer Studies</td>
             </tr>
             <tr>
               <td>9:20 AM</td>
               <td>Overview: Thesis 1 vs. Capstone 1 (BSCS vs. BSIT)</td>
+              <td>CCS Department Coordinator</td>
             </tr>
             <tr>
               <td>9:40 AM</td>
               <td>Documentation Requirements &amp; Template Walkthrough</td>
+              <td>Thesis/Capstone Committee</td>
             </tr>
             <tr>
               <td>10:00 AM</td>
               <td>Defense Rubrics, Evaluation &amp; Panel Structure</td>
+              <td>Thesis/Capstone Committee</td>
             </tr>
             <tr>
               <td>10:20 AM</td>
               <td>Title Defense Process &amp; Enrollment Guidelines</td>
+              <td>CCS Department Head</td>
             </tr>
             <tr>
               <td>10:40 AM</td>
               <td>Open Forum / Question &amp; Answer</td>
+              <td>All Panelists / Faculty</td>
             </tr>
             <tr>
               <td>11:00 AM</td>
               <td>Closing Remarks &amp; Distribution of Materials</td>
+              <td>OIC Dean, College of Computer Studies</td>
             </tr>
           </tbody>
         </table>
@@ -1077,7 +1227,6 @@
             <li>Significance of the Study</li>
           </ul>
         </div>
-       
         <div class="req-card bsit" style="border-top-color:#7B1FA2;">
           <h4 style="color:#7B1FA2;"><i class="fas fa-star-of-life"></i> Evaluation Criteria</h4>
           <ul>
@@ -1091,7 +1240,88 @@
 
       </div>
     </div>
-    
+
+    <!-- QUICK LINKS / RESOURCES -->
+    <div class="resources-section reveal" id="resources">
+      <div class="section-label">Quick Access</div>
+      <h2 class="section-title">Resources &amp; References</h2>
+      <div class="section-divider"></div>
+
+      <div class="resource-links-grid">
+
+        <!-- Card 1: Title Defense Flowchart -->
+        <a class="resource-link-card"
+           href="https://uphsd-molino-ccs.github.io/UPHSD-Molino-CCS.io/thesis-capstone/title-defense-flowchart.html"
+           target="_blank"
+           rel="noopener noreferrer">
+          <div class="rlc-stripe flowchart"></div>
+          <div class="rlc-icon-col">
+            <div class="rlc-icon-wrap flowchart">
+              <i class="fas fa-sitemap"></i>
+            </div>
+          </div>
+          <div class="rlc-body">
+            <span class="rlc-tag flowchart">Visual Guide</span>
+            <span class="rlc-title">Title Defense Timeline Flowchart</span>
+            <span class="rlc-desc">Step-by-step visual walkthrough of the entire title defense process — from group formation to enrollment.</span>
+            <span class="rlc-url">uphsd-molino-ccs.github.io &nbsp;›&nbsp; title-defense-flowchart.html</span>
+          </div>
+          <div class="rlc-arrow-col">
+            <i class="fas fa-chevron-right rlc-arrow"></i>
+          </div>
+          <span class="rlc-badge">VIEW</span>
+        </a>
+
+        <!-- Card 2: Document Resources (Google Drive) -->
+        <a class="resource-link-card"
+           href="https://drive.google.com/drive/folders/1PHJK9blmCCGbfms4rKnzbL6JF45d7r1A?usp=sharing"
+           target="_blank"
+           rel="noopener noreferrer">
+          <div class="rlc-stripe drive"></div>
+          <div class="rlc-icon-col">
+            <div class="rlc-icon-wrap drive">
+              <i class="fab fa-google-drive"></i>
+            </div>
+          </div>
+          <div class="rlc-body">
+            <span class="rlc-tag drive">Google Drive</span>
+            <span class="rlc-title">Document Resources</span>
+            <span class="rlc-desc">Official forms, thesis template, rubrics, agreement forms, and all downloadable files for Thesis 1 &amp; Capstone 1.</span>
+            <span class="rlc-url">drive.google.com &nbsp;›&nbsp; CCS Thesis &amp; Capstone Resources Folder</span>
+          </div>
+          <div class="rlc-arrow-col">
+            <i class="fas fa-chevron-right rlc-arrow"></i>
+          </div>
+          <span class="rlc-badge" style="background:var(--gold);color:var(--navy-deep);">OPEN</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- CTA / CONTACT -->
+    <div class="cta-section reveal" id="contact">
+      <h2>For Questions &amp; Inquiries</h2>
+      <p>Reach out to the College of Computer Studies Department for any clarifications about the orientation or enrollment process.</p>
+      <div class="contact-row">
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          (046) 477-0602 local 133
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-mobile-alt"></i>
+          0917-108-5707
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          ccs.molino@perpetualdalta.edu.ph
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-facebook"></i>
+          <a href="https://www.facebook.com/perpetualmolino/" target="_blank">@perpetualmolino</a>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <!-- ==============================
