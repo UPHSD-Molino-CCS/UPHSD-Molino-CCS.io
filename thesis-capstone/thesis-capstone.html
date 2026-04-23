@@ -300,64 +300,7 @@
       animation: fadeDown 0.6s 0.4s ease both, pulse-red 2s 1s infinite;
     }
 
-    /* =============================================
-       COUNTDOWN TIMER
-    ============================================= */
-    .countdown-wrap {
-      background: var(--navy-deep);
-      padding: 32px;
-      border-top: 1px solid rgba(212,160,23,0.2);
-    }
-    .countdown-inner {
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .countdown-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      margin-bottom: 16px;
-    }
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .countdown-unit {
-      text-align: center;
-      min-width: 72px;
-    }
-    .countdown-number {
-      display: block;
-      font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(212,160,23,0.25);
-      border-radius: 4px;
-      padding: 12px 16px;
-      min-width: 72px;
-    }
-    .countdown-unit-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
-      margin-top: 6px;
-      display: block;
-    }
-    .countdown-sep {
-      font-size: 2rem;
-      color: var(--gold);
-      line-height: 1;
-      padding-top: 12px;
-    }
+
 
     /* =============================================
        MAIN CONTENT
@@ -560,7 +503,6 @@
     }
     .program-table tbody td:nth-child(2) { font-weight: 500; }
     .program-table tbody td:last-child { color: var(--text-muted); font-size: 0.83rem; }
-    .program-table tbody tr:nth-child(even) td:first-child ~ td { }
 
     /* =============================================
        REQUIREMENTS SECTION
@@ -875,6 +817,277 @@
       .resource-links-grid { grid-template-columns: 1fr; }
       .rlc-url { display: none; }
     }
+    /* =============================================
+       ORIENTATION GALLERY
+    ============================================= */
+    .gallery-section {
+      background: var(--navy-deep);
+    }
+
+    /* Header band */
+    .gallery-header {
+      background: var(--navy-deep);
+      border-top: 3px solid var(--gold);
+      padding: 36px 32px 28px;
+      text-align: center;
+    }
+    .gallery-header-inner { max-width: 680px; margin: 0 auto; }
+
+    .gallery-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212,160,23,0.12);
+      border: 1px solid rgba(212,160,23,0.3);
+      color: var(--gold-light);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 14px;
+    }
+    .gallery-eyebrow i { color: #4CAF50; }
+
+    .gallery-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 10px;
+      line-height: 1.15;
+    }
+
+    .gallery-sub {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 300;
+    }
+
+    /* ---- PHOTO GRID ---- */
+    .gallery-grid {
+      display: grid;
+      /* 4-column auto grid; featured item spans 2 */
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 220px;
+      gap: 4px;
+      padding: 4px;
+      background: var(--navy-deep);
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: rgba(255,255,255,0.04);
+    }
+
+    /* Featured tile: 2 cols × 2 rows */
+    .gallery-item--featured {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s ease, filter 0.45s ease;
+      filter: brightness(0.88);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+      filter: brightness(1.0);
+    }
+
+    /* Caption overlay — slides up on hover */
+    .gallery-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,21,48,0.92) 0%, transparent 100%);
+      padding: 28px 16px 12px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    .gallery-item:hover .gallery-caption {
+      transform: translateY(0);
+    }
+    .gallery-caption span {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.9);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .gallery-caption i { color: var(--gold-light); font-size: 0.7rem; }
+
+    /* Zoom icon badge on hover */
+    .gallery-item::after {
+      content: '\f00e'; /* fa-search-plus */
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      top: 12px; right: 12px;
+      width: 32px; height: 32px;
+      background: rgba(212,160,23,0.85);
+      color: var(--navy-deep);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      opacity: 0;
+      transition: opacity 0.25s;
+      line-height: 32px;
+      text-align: center;
+    }
+    .gallery-item:hover::after { opacity: 1; }
+
+    /* Broken / missing image placeholder */
+    .gallery-item img[src=""],
+    .gallery-item img:not([src]) {
+      visibility: hidden;
+    }
+    .gallery-item.img-missing {
+      background: rgba(255,255,255,0.04);
+      border: 1px dashed rgba(212,160,23,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      cursor: default;
+    }
+    .gallery-item.img-missing::after { display: none; }
+    .gallery-item.img-missing .img-placeholder-icon {
+      font-size: 1.8rem;
+      color: rgba(212,160,23,0.25);
+    }
+    .gallery-item.img-missing .img-placeholder-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.05em;
+    }
+
+    /* Footer note */
+    .gallery-footer-note {
+      background: rgba(0,0,0,0.3);
+      border-top: 1px solid rgba(212,160,23,0.1);
+      padding: 14px 32px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+    }
+    .gallery-footer-note code {
+      background: rgba(212,160,23,0.12);
+      color: var(--gold-light);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 0.74rem;
+    }
+    .gallery-footer-note i { margin-right: 6px; color: rgba(212,160,23,0.5); }
+
+    /* ---- LIGHTBOX ---- */
+    .lightbox {
+      display: none;   /* shown via JS */
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,15,36,0.96);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .lightbox.open { display: flex; }
+
+    .lightbox-stage {
+      position: relative;
+      max-width: min(92vw, 1100px);
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #lb-img {
+      max-width: 100%;
+      max-height: 72vh;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+      display: block;
+    }
+
+    .lightbox-caption {
+      margin-top: 14px;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+
+    .lightbox-counter {
+      margin-top: 10px;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* Lightbox buttons */
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+      position: fixed;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--white);
+      border-radius: 50%;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.2s;
+      z-index: 10000;
+    }
+    .lightbox-close:hover,
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+      background: rgba(212,160,23,0.25);
+      border-color: var(--gold);
+    }
+    .lightbox-close { top: 20px; right: 24px; }
+    .lightbox-prev  { left: 20px;  top: 50%; transform: translateY(-50%); }
+    .lightbox-next  { right: 20px; top: 50%; transform: translateY(-50%); }
+    .lightbox-prev:hover { transform: translateY(-50%) translateX(-2px); }
+    .lightbox-next:hover { transform: translateY(-50%) translateX(2px); }
+
+    /* ---- GALLERY RESPONSIVE ---- */
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
+      }
+      .gallery-item--featured {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+    }
+    @media (max-width: 520px) {
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 140px;
+      }
+      .gallery-header { padding: 28px 18px 20px; }
+      .lightbox-prev { left: 8px; }
+      .lightbox-next { right: 8px; }
+    }
+
   </style>
 </head>
 <body>
@@ -915,6 +1128,7 @@
 
       <nav id="main-nav">
         <a href="#event-details">Event Details</a>
+        <a href="#gallery">Gallery</a>
         <a href="#program">Program</a>
         <a href="#requirements">Requirements</a>
         <a href="#resources">Resources</a>
@@ -931,8 +1145,8 @@
     <div class="hero-stripe"></div>
     <div class="hero-inner">
       <div class="hero-eyebrow">
-        <i class="fas fa-bell"></i>
-        Official Announcement — College of Computer Studies
+        <i class="fas fa-check-circle" style="color:#4CAF50;"></i>
+        Orientation Concluded — College of Computer Studies
       </div>
 
       <h1>
@@ -941,9 +1155,9 @@
       </h1>
 
       <p class="hero-sub">
-        All students enrolling in <strong style="color:#fff;">Thesis 1</strong> or
-        <strong style="color:#fff;">Capstone 1</strong> for Summer 2026 are
-        required to attend this orientation.
+        The orientation for students enrolling in <strong style="color:#fff;">Thesis 1</strong> or
+        <strong style="color:#fff;">Capstone 1</strong> for Summer 2026 has been successfully held.
+        See the highlights below.
       </p>
 
       <div class="hero-chips">
@@ -953,41 +1167,129 @@
         <div class="chip"><i class="fas fa-graduation-cap"></i> 3rd Year IT &amp; CS Students</div>
       </div>
 
-      <div class="mandatory-badge">
-        ⚠ &nbsp; MANDATORY ATTENDANCE
+      <div class="mandatory-badge" style="background:#2E7D32; animation:none;">
+        ✓ &nbsp; SUCCESSFULLY CONCLUDED — APRIL 23, 2026
       </div>
     </div>
   </section>
 
   <!-- ==============================
-       COUNTDOWN
+       ORIENTATION GALLERY
   ============================== -->
-  <div class="countdown-wrap">
-    <div class="countdown-inner">
-      <div class="countdown-label"><i class="fas fa-hourglass-half" style="margin-right:6px;"></i>Time Remaining Until Orientation</div>
-      <div class="countdown">
-        <div class="countdown-unit">
-          <span class="countdown-number" id="cd-days">--</span>
-          <span class="countdown-unit-label">Days</span>
+  <section class="gallery-section" id="gallery">
+
+    <!-- Section header band -->
+    <div class="gallery-header">
+      <div class="gallery-header-inner">
+        <div class="gallery-eyebrow">
+          <i class="fas fa-check-circle"></i> Orientation Concluded — April 23, 2026
         </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-unit">
-          <span class="countdown-number" id="cd-hours">--</span>
-          <span class="countdown-unit-label">Hours</span>
-        </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-unit">
-          <span class="countdown-number" id="cd-mins">--</span>
-          <span class="countdown-unit-label">Minutes</span>
-        </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-unit">
-          <span class="countdown-number" id="cd-secs">--</span>
-          <span class="countdown-unit-label">Seconds</span>
-        </div>
+        <h2 class="gallery-title">Orientation Highlights</h2>
+        <p class="gallery-sub">
+          Thank you to all students and faculty who attended. Here's a look at how it went.
+        </p>
       </div>
     </div>
-  </div>
+
+    <!-- Masonry-style photo grid -->
+    <div class="gallery-grid" id="gallery-grid">
+
+      <!-- Featured / hero image — spans 2 columns -->
+      <div class="gallery-item gallery-item--featured" data-index="0">
+        <img src="\assets\images\orientation\img1.jpg"
+             alt="Opening of the Thesis & Capstone Title Defense Orientation"
+             loading="lazy" />
+        <div class="gallery-caption">
+          <span><i class="fas fa-camera"></i> Opening Ceremony — ComLab M-210</span>
+        </div>
+      </div>
+
+      <!-- Standard tiles -->
+      <div class="gallery-item" data-index="1">
+        <img src="\assets\images\orientation\img2.jpg"
+             alt="OIC Dean delivering welcome remarks"
+             loading="lazy" />
+        <div class="gallery-caption">
+          <span><i class="fas fa-camera"></i> Welcome Remarks — OIC Dean, CCS</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-index="2">
+        <img src="/assets/images/orientation/img3.jpg"
+             alt="CCS faculty presenting thesis vs capstone overview"
+             loading="lazy" />
+        <div class="gallery-caption">
+          <span><i class="fas fa-camera"></i> Thesis vs. Capstone Overview</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-index="3">
+        <img src="/assets/images/orientation/img4.jpg"
+             alt="Documentation requirements discussion"
+             loading="lazy" />
+        <div class="gallery-caption">
+          <span><i class="fas fa-camera"></i> Documentation Requirements</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-index="4">
+        <img src="/assets/images/orientation/img5.jpg"
+             alt="Defense rubric and evaluation criteria presentation"
+             loading="lazy" />
+        <div class="gallery-caption">
+          <span><i class="fas fa-camera"></i> Defense Rubric Presentation</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-index="5">
+        <img src="/assets/images/orientation/img6.jpg"
+             alt="Students attentively listening during the orientation"
+             loading="lazy" />
+        <div class="gallery-caption">
+          <span><i class="fas fa-camera"></i> Students in Attendance</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-index="6">
+        <img src="/assets/images/orientation/img7.jpg"
+             alt="Open forum and Q&A session"
+             loading="lazy" />
+        <div class="gallery-caption">
+          <span><i class="fas fa-camera"></i> Open Forum / Q&amp;A Session</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-index="7">
+        <img src="/assets/images/orientation/img8.jpg"
+             alt="Group photo after orientation"
+             loading="lazy" />
+        <div class="gallery-caption">
+          <span><i class="fas fa-camera"></i> Post-Orientation Group Photo</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Note about adding more photos -->
+    <div class="gallery-footer-note">
+      <i class="fas fa-folder-open"></i>
+      Place your photos in <code>assets/images/orientation/</code> named
+      <code>img1.jpg</code> through <code>img8.jpg</code> (or more — the grid auto-expands).
+    </div>
+
+    <!-- Lightbox overlay -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+      <button class="lightbox-close" id="lb-close" aria-label="Close"><i class="fas fa-times"></i></button>
+      <button class="lightbox-prev"  id="lb-prev"  aria-label="Previous photo"><i class="fas fa-chevron-left"></i></button>
+      <button class="lightbox-next"  id="lb-next"  aria-label="Next photo"><i class="fas fa-chevron-right"></i></button>
+      <div class="lightbox-stage">
+        <img id="lb-img" src="" alt="" />
+        <div class="lightbox-caption" id="lb-caption"></div>
+      </div>
+      <div class="lightbox-counter" id="lb-counter"></div>
+    </div>
+
+  </section>
 
   <!-- ==============================
        MAIN CONTENT
@@ -1227,6 +1529,7 @@
             <li>Significance of the Study</li>
           </ul>
         </div>
+
         <div class="req-card bsit" style="border-top-color:#7B1FA2;">
           <h4 style="color:#7B1FA2;"><i class="fas fa-star-of-life"></i> Evaluation Criteria</h4>
           <ul>
@@ -1362,42 +1665,111 @@
 
 
     /* -----------------------------------------------
-       COUNTDOWN TIMER
-       Target: April 23, 2026, 9:00 AM Philippine Time (UTC+8)
-       Uses dynamic calculation every second
+       GALLERY — MISSING IMAGE FALLBACK
+       If a photo file doesn't exist yet, the tile
+       shows a friendly placeholder instead of a
+       broken image icon.
     ----------------------------------------------- */
-    const targetDate = new Date('2026-04-23T09:00:00+08:00');
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+      img.addEventListener('error', function () {
+        const tile = this.closest('.gallery-item');
+        tile.classList.add('img-missing');
+        // Remove the broken <img> and inject placeholder markup
+        this.remove();
+        tile.innerHTML = `
+          <div class="img-placeholder-icon"><i class="fas fa-image"></i></div>
+          <div class="img-placeholder-label">${tile.querySelector('.gallery-caption span')?.textContent?.replace(/^\s*\S+\s/, '') || 'Photo coming soon'}</div>
+        `;
+      });
+    });
 
-    function pad(n) {
-      // Zero-pad numbers to always show 2 digits (e.g. 5 → "05")
-      return String(n).padStart(2, '0');
+
+    /* -----------------------------------------------
+       LIGHTBOX
+       Click any gallery tile → opens full-size viewer.
+       Keyboard: Escape closes, ← → navigates.
+       Touch: swipe left/right navigates.
+    ----------------------------------------------- */
+    const lightbox   = document.getElementById('lightbox');
+    const lbImg      = document.getElementById('lb-img');
+    const lbCaption  = document.getElementById('lb-caption');
+    const lbCounter  = document.getElementById('lb-counter');
+    const lbClose    = document.getElementById('lb-close');
+    const lbPrev     = document.getElementById('lb-prev');
+    const lbNext     = document.getElementById('lb-next');
+
+    // Collect all non-missing gallery items
+    let galleryItems = [];
+    let currentIndex = 0;
+
+    function buildGalleryItems() {
+      // Re-query each time in case DOM changed (e.g. error replacements)
+      galleryItems = Array.from(document.querySelectorAll('.gallery-item:not(.img-missing)'));
     }
 
-    function updateCountdown() {
-      const now = new Date();
-      const diff = targetDate - now; // Difference in milliseconds
+    function openLightbox(index) {
+      buildGalleryItems();
+      if (!galleryItems.length) return;
+      currentIndex = ((index % galleryItems.length) + galleryItems.length) % galleryItems.length;
+      const item   = galleryItems[currentIndex];
+      const img    = item.querySelector('img');
+      const cap    = item.querySelector('.gallery-caption span')?.textContent?.trim() || '';
 
-      if (diff <= 0) {
-        // Event has already started — show a live message
-        document.querySelector('.countdown-wrap').innerHTML =
-          '<div class="countdown-inner"><div class="countdown-label" style="font-size:1rem;color:var(--gold-light);">🎓 The Orientation is Happening NOW — ComLab M-210!</div></div>';
-        return;
-      }
+      lbImg.src       = img ? img.src : '';
+      lbImg.alt       = img ? img.alt : '';
+      lbCaption.textContent = cap.replace(/^[^\s]+\s/, ''); // strip the FA icon char
+      lbCounter.textContent = `${currentIndex + 1} / ${galleryItems.length}`;
 
-      // Break down milliseconds into days, hours, minutes, seconds
-      const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const secs  = Math.floor((diff % (1000 * 60)) / 1000);
-
-      document.getElementById('cd-days').textContent  = pad(days);
-      document.getElementById('cd-hours').textContent = pad(hours);
-      document.getElementById('cd-mins').textContent  = pad(mins);
-      document.getElementById('cd-secs').textContent  = pad(secs);
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden'; // prevent background scroll
+      lbClose.focus();
     }
 
-    updateCountdown();                    // Run immediately on load
-    setInterval(updateCountdown, 1000);   // Then update every second
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function navigate(dir) {
+      // dir: +1 = next, -1 = prev
+      openLightbox(currentIndex + dir);
+    }
+
+    // Attach click handlers to gallery tiles
+    document.getElementById('gallery-grid').addEventListener('click', e => {
+      const tile = e.target.closest('.gallery-item:not(.img-missing)');
+      if (!tile) return;
+      buildGalleryItems();
+      const idx = galleryItems.indexOf(tile);
+      if (idx !== -1) openLightbox(idx);
+    });
+
+    lbClose.addEventListener('click', closeLightbox);
+    lbPrev.addEventListener('click',  () => navigate(-1));
+    lbNext.addEventListener('click',  () => navigate(+1));
+
+    // Click outside the image to close
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape')     closeLightbox();
+      if (e.key === 'ArrowLeft')  navigate(-1);
+      if (e.key === 'ArrowRight') navigate(+1);
+    });
+
+    // Touch swipe support
+    let touchStartX = 0;
+    lightbox.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    lightbox.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 50) navigate(dx < 0 ? +1 : -1); // swipe left = next
+    }, { passive: true });
 
 
     /* -----------------------------------------------
