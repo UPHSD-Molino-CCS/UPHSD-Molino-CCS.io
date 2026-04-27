@@ -1263,7 +1263,42 @@
         </div>
         <h2 class="news-title">Registered Groups for Title Defense</h2>
         <p class="news-subtitle">
-          The following groups have successfully registered for the upcoming Thesis &amp; Capstone Title Defense.
+          The following groups have successfully registered for the upcoming Thesis &amp; Capstone Title Defense (as of April 27, 2026) DEADLINE: MAY 1, 2026
+
+    <!-- COUNTDOWN TIMER SECTION -->
+    <div id="registration-countdown" style="text-align: center; margin: 20px 0; padding: 20px; background: var(--navy); color: var(--white); border-radius: 8px; font-family: 'DM Sans', sans-serif;">
+      <h3 style="color: var(--gold); margin-bottom: 15px; font-family: 'Playfair Display', serif;">Registration Deadline Countdown</h3>
+      <div id="timer-display" style="font-size: 2rem; font-weight: 700; letter-spacing: 2px;">
+        <span id="days">00</span>d : <span id="hours">00</span>h : <span id="minutes">00</span>m : <span id="seconds">00</span>s
+      </div>
+      <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">Closing on May 1, 2026, at 11:59 PM</p>
+    </div>
+
+    <script>
+      (function() {
+        const countdownDate = new Date("May 1, 2026 23:59:59").getTime();
+
+        const timerInterval = setInterval(function() {
+          const now = new Date().getTime();
+          const distance = countdownDate - now;
+
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          document.getElementById("days").innerText = String(days).padStart(2, '0');
+          document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+          document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+          document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+
+          if (distance < 0) {
+            clearInterval(timerInterval);
+            document.getElementById("registration-countdown").innerHTML = "<h3 style='color: var(--gold);'>Registration Closed</h3>";
+          }
+        }, 1000);
+      })();
+    </script>
         </p>
       </div>
 
