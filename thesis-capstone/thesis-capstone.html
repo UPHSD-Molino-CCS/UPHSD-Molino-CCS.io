@@ -5,12 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thesis/Capstone Title Defense Orientation | CCS – UPHSD Molino</title>
 
-  <!-- Google Fonts: Playfair Display (display) + DM Sans (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
@@ -300,8 +298,6 @@
       animation: fadeDown 0.6s 0.4s ease both, pulse-red 2s 1s infinite;
     }
 
-
-
     /* =============================================
        MAIN CONTENT
     ============================================= */
@@ -503,6 +499,7 @@
     }
     .program-table tbody td:nth-child(2) { font-weight: 500; }
     .program-table tbody td:last-child { color: var(--text-muted); font-size: 0.83rem; }
+    .program-table tbody tr:nth-child(even) td:first-child ~ td { }
 
     /* =============================================
        REQUIREMENTS SECTION
@@ -636,10 +633,6 @@
       0%, 100% { box-shadow: 0 0 0 0 rgba(192,57,43,0.4); }
       50%       { box-shadow: 0 0 0 8px rgba(192,57,43,0); }
     }
-    @keyframes pulse-gold {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(212,160,23,0.4); }
-      50%       { box-shadow: 0 0 0 8px rgba(212,160,23,0); }
-    }
 
     /* Scroll reveal */
     .reveal {
@@ -658,14 +651,11 @@
     .resources-section {
       margin-bottom: 60px;
     }
-
     .resource-links-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
     }
-
-    /* Each big link card */
     .resource-link-card {
       display: flex;
       align-items: stretch;
@@ -686,16 +676,12 @@
     .resource-link-card:hover .rlc-arrow {
       transform: translateX(4px);
     }
-
-    /* Colored left accent strip */
     .rlc-stripe {
       width: 6px;
       flex-shrink: 0;
     }
     .rlc-stripe.flowchart { background: var(--navy); }
     .rlc-stripe.drive     { background: var(--gold); }
-
-    /* Icon column */
     .rlc-icon-col {
       display: flex;
       align-items: center;
@@ -717,8 +703,6 @@
       background: rgba(212,160,23,0.12);
       color: var(--gold);
     }
-
-    /* Text body */
     .rlc-body {
       padding: 22px 16px 22px 0;
       flex: 1;
@@ -736,7 +720,6 @@
     }
     .rlc-tag.flowchart { color: var(--navy); }
     .rlc-tag.drive     { color: var(--gold); }
-
     .rlc-title {
       font-family: 'Playfair Display', serif;
       font-size: 1.05rem;
@@ -760,8 +743,6 @@
       text-overflow: ellipsis;
       max-width: 320px;
     }
-
-    /* Arrow chevron */
     .rlc-arrow-col {
       display: flex;
       align-items: center;
@@ -774,8 +755,6 @@
       transition: transform 0.2s, color 0.2s;
     }
     .resource-link-card:hover .rlc-arrow { color: var(--gold); }
-
-    /* "NEW" badge */
     .rlc-badge {
       position: absolute;
       top: 12px; right: 12px;
@@ -787,6 +766,368 @@
       padding: 3px 8px;
       border-radius: 2px;
     }
+
+    /* =============================================
+       NEWS UPDATES SECTION (HARDCODED TABLE STYLES)
+    ============================================= */
+    .news-updates-section {
+      background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-mid) 100%);
+      padding: 48px 32px;
+      border-top: 3px solid var(--gold);
+      border-bottom: 1px solid rgba(212,160,23,0.15);
+    }
+    .news-updates-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .news-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .news-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212,160,23,0.15);
+      border: 1px solid rgba(212,160,23,0.35);
+      color: var(--gold-light);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+    .news-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 10px;
+      line-height: 1.15;
+    }
+    .news-subtitle {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 300;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* News Table Styles */
+    .news-table-wrapper {
+      background: var(--white);
+      border-radius: 8px;
+      overflow-x: auto;
+      box-shadow: var(--shadow-md);
+      margin: 28px auto 0; /* Centered */
+      max-width: 1100px;    /* Proportion to page */
+      width: 100%;
+    }
+    .news-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      table-layout: fixed; /* Ensures specified widths are honored */
+    }
+    /* Proportional Column Control */
+    .news-table th:nth-child(1), .news-table td:nth-child(1) { width: 15%; } /* Program */
+    .news-table th:nth-child(2), .news-table td:nth-child(2) { 
+      width: 25%; 
+      white-space: normal; /* Allow wrapping for PM names if needed, but keeps column narrow */
+    } 
+    .news-table th:nth-child(3), .news-table td:nth-child(3) { 
+      width: 30%; 
+      white-space: normal; /* High flexibility for long member lists */
+    }
+    .news-table thead tr {
+      background: var(--navy);
+      color: var(--gold-light);
+    }
+    .news-table th {
+      padding: 16px 20px;
+      text-align: left;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+    .news-table tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+    .news-table tbody tr:hover { background: var(--gold-pale); }
+    .news-table td {
+      padding: 14px 20px;
+      color: var(--text-dark);
+      vertical-align: top;
+    }
+    .news-table td:first-child {
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .news-table ul.member-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .news-table ul.member-list li {
+      padding: 2px 0;
+      color: var(--text-muted);
+    }
+    .news-table ul.member-list li::before {
+      content: '•';
+      color: var(--gold);
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    /* Stats bar */
+    .news-stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 32px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(212,160,23,0.15);
+      flex-wrap: wrap;
+    }
+    .news-stat-item {
+      text-align: center;
+    }
+    .news-stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      display: block;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .news-stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* =============================================
+       ORIENTATION GALLERY
+    ============================================= */
+    .gallery-section {
+      background: var(--navy-deep);
+    }
+    .gallery-header {
+      background: var(--navy-deep);
+      border-top: 3px solid var(--gold);
+      padding: 36px 32px 28px;
+      text-align: center;
+    }
+    .gallery-header-inner { max-width: 680px; margin: 0 auto; }
+    .gallery-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212,160,23,0.12);
+      border: 1px solid rgba(212,160,23,0.3);
+      color: var(--gold-light);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 14px;
+    }
+    .gallery-eyebrow i { color: #4CAF50; }
+    .gallery-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 10px;
+      line-height: 1.15;
+    }
+    .gallery-sub {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 300;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 220px;
+      gap: 4px;
+      padding: 4px;
+      background: var(--navy-deep);
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: rgba(255,255,255,0.04);
+    }
+    .gallery-item--featured {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s ease, filter 0.45s ease;
+      filter: brightness(0.88);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.06);
+      filter: brightness(1.0);
+    }
+    .gallery-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,21,48,0.92) 0%, transparent 100%);
+      padding: 28px 16px 12px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    .gallery-item:hover .gallery-caption {
+      transform: translateY(0);
+    }
+    .gallery-caption span {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.9);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .gallery-caption i { color: var(--gold-light); font-size: 0.7rem; }
+    .gallery-item::after {
+      content: '\f00e';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      top: 12px; right: 12px;
+      width: 32px; height: 32px;
+      background: rgba(212,160,23,0.85);
+      color: var(--navy-deep);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      opacity: 0;
+      transition: opacity 0.25s;
+      line-height: 32px;
+      text-align: center;
+    }
+    .gallery-item:hover::after { opacity: 1; }
+    .gallery-item img[src=""],
+    .gallery-item img:not([src]) { visibility: hidden; }
+    .gallery-item.img-missing {
+      background: rgba(255,255,255,0.04);
+      border: 1px dashed rgba(212,160,23,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      cursor: default;
+    }
+    .gallery-item.img-missing::after { display: none; }
+    .gallery-item.img-missing .img-placeholder-icon {
+      font-size: 1.8rem;
+      color: rgba(212,160,23,0.25);
+    }
+    .gallery-item.img-missing .img-placeholder-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.05em;
+    }
+    .gallery-footer-note {
+      background: rgba(0,0,0,0.3);
+      border-top: 1px solid rgba(212,160,23,0.1);
+      padding: 14px 32px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+    }
+    .gallery-footer-note code {
+      background: rgba(212,160,23,0.12);
+      color: var(--gold-light);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 0.74rem;
+    }
+    .gallery-footer-note i { margin-right: 6px; color: rgba(212,160,23,0.5); }
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,15,36,0.96);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-stage {
+      position: relative;
+      max-width: min(92vw, 1100px);
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #lb-img {
+      max-width: 100%;
+      max-height: 72vh;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+      display: block;
+    }
+    .lightbox-caption {
+      margin-top: 14px;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .lightbox-counter {
+      margin-top: 10px;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .lightbox-close, .lightbox-prev, .lightbox-next {
+      position: fixed;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--white);
+      border-radius: 50%;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.2s;
+      z-index: 10000;
+    }
+    .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover {
+      background: rgba(212,160,23,0.25);
+      border-color: var(--gold);
+    }
+    .lightbox-close { top: 20px; right: 24px; }
+    .lightbox-prev  { left: 20px;  top: 50%; transform: translateY(-50%); }
+    .lightbox-next  { right: 20px; top: 50%; transform: translateY(-50%); }
+    .lightbox-prev:hover { transform: translateY(-50%) translateX(-2px); }
+    .lightbox-next:hover { transform: translateY(-50%) translateX(2px); }
 
     /* =============================================
        RESPONSIVE
@@ -816,258 +1157,9 @@
       .program-table tbody td { padding: 10px 12px; }
       .resource-links-grid { grid-template-columns: 1fr; }
       .rlc-url { display: none; }
+      .news-updates-section { padding: 32px 18px; }
+      .news-stats { gap: 20px; }
     }
-    /* =============================================
-       ORIENTATION GALLERY
-    ============================================= */
-    .gallery-section {
-      background: var(--navy-deep);
-    }
-
-    /* Header band */
-    .gallery-header {
-      background: var(--navy-deep);
-      border-top: 3px solid var(--gold);
-      padding: 36px 32px 28px;
-      text-align: center;
-    }
-    .gallery-header-inner { max-width: 680px; margin: 0 auto; }
-
-    .gallery-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(212,160,23,0.12);
-      border: 1px solid rgba(212,160,23,0.3);
-      color: var(--gold-light);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 6px 16px;
-      border-radius: 2px;
-      margin-bottom: 14px;
-    }
-    .gallery-eyebrow i { color: #4CAF50; }
-
-    .gallery-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      font-weight: 900;
-      color: var(--white);
-      margin-bottom: 10px;
-      line-height: 1.15;
-    }
-
-    .gallery-sub {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.55);
-      font-weight: 300;
-    }
-
-    /* ---- PHOTO GRID ---- */
-    .gallery-grid {
-      display: grid;
-      /* 4-column auto grid; featured item spans 2 */
-      grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: 220px;
-      gap: 4px;
-      padding: 4px;
-      background: var(--navy-deep);
-    }
-
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      background: rgba(255,255,255,0.04);
-    }
-
-    /* Featured tile: 2 cols × 2 rows */
-    .gallery-item--featured {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.45s ease, filter 0.45s ease;
-      filter: brightness(0.88);
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.06);
-      filter: brightness(1.0);
-    }
-
-    /* Caption overlay — slides up on hover */
-    .gallery-caption {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      background: linear-gradient(to top, rgba(0,21,48,0.92) 0%, transparent 100%);
-      padding: 28px 16px 12px;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-    }
-    .gallery-item:hover .gallery-caption {
-      transform: translateY(0);
-    }
-    .gallery-caption span {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.9);
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .gallery-caption i { color: var(--gold-light); font-size: 0.7rem; }
-
-    /* Zoom icon badge on hover */
-    .gallery-item::after {
-      content: '\f00e'; /* fa-search-plus */
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
-      position: absolute;
-      top: 12px; right: 12px;
-      width: 32px; height: 32px;
-      background: rgba(212,160,23,0.85);
-      color: var(--navy-deep);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      opacity: 0;
-      transition: opacity 0.25s;
-      line-height: 32px;
-      text-align: center;
-    }
-    .gallery-item:hover::after { opacity: 1; }
-
-    /* Broken / missing image placeholder */
-    .gallery-item img[src=""],
-    .gallery-item img:not([src]) {
-      visibility: hidden;
-    }
-    .gallery-item.img-missing {
-      background: rgba(255,255,255,0.04);
-      border: 1px dashed rgba(212,160,23,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 8px;
-      cursor: default;
-    }
-    .gallery-item.img-missing::after { display: none; }
-    .gallery-item.img-missing .img-placeholder-icon {
-      font-size: 1.8rem;
-      color: rgba(212,160,23,0.25);
-    }
-    .gallery-item.img-missing .img-placeholder-label {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.2);
-      letter-spacing: 0.05em;
-    }
-
-    /* Footer note */
-    .gallery-footer-note {
-      background: rgba(0,0,0,0.3);
-      border-top: 1px solid rgba(212,160,23,0.1);
-      padding: 14px 32px;
-      text-align: center;
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.35);
-    }
-    .gallery-footer-note code {
-      background: rgba(212,160,23,0.12);
-      color: var(--gold-light);
-      padding: 2px 6px;
-      border-radius: 3px;
-      font-size: 0.74rem;
-    }
-    .gallery-footer-note i { margin-right: 6px; color: rgba(212,160,23,0.5); }
-
-    /* ---- LIGHTBOX ---- */
-    .lightbox {
-      display: none;   /* shown via JS */
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: rgba(0,15,36,0.96);
-      backdrop-filter: blur(8px);
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-    .lightbox.open { display: flex; }
-
-    .lightbox-stage {
-      position: relative;
-      max-width: min(92vw, 1100px);
-      max-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    #lb-img {
-      max-width: 100%;
-      max-height: 72vh;
-      object-fit: contain;
-      border-radius: 4px;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
-      display: block;
-    }
-
-    .lightbox-caption {
-      margin-top: 14px;
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.65);
-      text-align: center;
-      letter-spacing: 0.02em;
-    }
-
-    .lightbox-counter {
-      margin-top: 10px;
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.3);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    /* Lightbox buttons */
-    .lightbox-close,
-    .lightbox-prev,
-    .lightbox-next {
-      position: fixed;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: var(--white);
-      border-radius: 50%;
-      width: 44px; height: 44px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      font-size: 0.95rem;
-      transition: background 0.2s, transform 0.2s;
-      z-index: 10000;
-    }
-    .lightbox-close:hover,
-    .lightbox-prev:hover,
-    .lightbox-next:hover {
-      background: rgba(212,160,23,0.25);
-      border-color: var(--gold);
-    }
-    .lightbox-close { top: 20px; right: 24px; }
-    .lightbox-prev  { left: 20px;  top: 50%; transform: translateY(-50%); }
-    .lightbox-next  { right: 20px; top: 50%; transform: translateY(-50%); }
-    .lightbox-prev:hover { transform: translateY(-50%) translateX(-2px); }
-    .lightbox-next:hover { transform: translateY(-50%) translateX(2px); }
-
-    /* ---- GALLERY RESPONSIVE ---- */
     @media (max-width: 900px) {
       .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1087,14 +1179,10 @@
       .lightbox-prev { left: 8px; }
       .lightbox-next { right: 8px; }
     }
-
   </style>
 </head>
 <body>
 
-  <!-- ==============================
-       TOP RIBBON
-  ============================== -->
   <div class="top-ribbon">
     <span>University of Perpetual Help System DALTA — Molino Campus</span>
     <span>
@@ -1108,9 +1196,6 @@
     </span>
   </div>
 
-  <!-- ==============================
-       HEADER
-  ============================== -->
   <header>
     <div class="header-inner">
       <a class="header-brand" href="#">
@@ -1121,13 +1206,13 @@
         </div>
       </a>
 
-      <!-- Hamburger -->
       <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
       </button>
 
       <nav id="main-nav">
         <a href="#event-details">Event Details</a>
+        <a href="#news-updates">News Updates</a>
         <a href="#gallery">Gallery</a>
         <a href="#program">Program</a>
         <a href="#requirements">Requirements</a>
@@ -1138,9 +1223,6 @@
     </div>
   </header>
 
-  <!-- ==============================
-       HERO
-  ============================== -->
   <section class="hero">
     <div class="hero-stripe"></div>
     <div class="hero-inner">
@@ -1173,12 +1255,103 @@
     </div>
   </section>
 
-  <!-- ==============================
-       ORIENTATION GALLERY
-  ============================== -->
-  <section class="gallery-section" id="gallery">
+  <section class="news-updates-section" id="news-updates">
+    <div class="news-updates-inner">
 
-    <!-- Section header band -->
+      <div class="news-header">
+        <div class="news-eyebrow">
+          <i class="fas fa-bullhorn"></i>
+          Live Updates
+        </div>
+        <h2 class="news-title">Registered Groups for Title Defense</h2>
+        <p class="news-subtitle">
+          The following groups have successfully registered for the upcoming Thesis &amp; Capstone Title Defense.
+        </p>
+      </div>
+
+      <div class="news-table-wrapper">
+        <table class="news-table">
+          <thead>
+            <tr>
+              <th>Program</th>
+              <th>Project Manager / Principal Researcher</th>
+              <th>Members</th>
+            </tr>
+          </thead>
+          <tbody id="registered-groups-tbody">
+            
+            <tr data-program="BSIT-GD">
+              <td>BSIT</td>
+              <td>John Rich Villaruel</td>
+              <td>
+                <ul class="member-list">
+                  <li>Ren Jan Vincent E. Sto. Domingo</li>
+                  <li>Leano, Aldrin Jay</li>
+                  <li>Parco, James Alfred C. </li>
+                </ul>
+              </td>
+            </tr>
+            <tr data-program="BSCS">
+              <td>BSCS-DS</td>
+              <td>Dorothy Miles Ang</td>
+              <td>
+                <ul class="member-list">
+                  <li>Brent Gabriel E. De Castro</li>
+                  <li>Mariella Janine A. Sola</li>
+                  <li>Jose Brian A. Dela Peña</li>
+                </ul>
+              </td>
+            </tr>
+
+                        <tr data-program="BSCS">
+              <td>BSCS-DS</td>
+              <td>Lerrica Torreno</td>
+              <td>
+                <ul class="member-list">
+                  <li>Solis, Alexander Jon</li>
+                  <li>Virata, Sean Maverick</li>
+                </ul>
+              </td>
+            </tr>
+            <tr data-program="BSCS">
+              <td>BSCS-DS</td>
+              <td>Louezethe Ian Ilicir N. Saldua</td>
+              <td>
+                <ul class="member-list">
+                  <li>JERDELYNE R. LADRINGAN</li>
+                  <li>Shekinah D. Bolante</li>
+                  <li>Mary Richalene P. Dalisay</li>
+                </ul>
+              </td>
+            </tr>
+
+            </tbody>
+        </table>
+      </div>
+
+      <div class="news-stats" id="news-stats">
+        <div class="news-stat-item">
+          <span class="news-stat-value" id="stat-groups">0</span>
+          <span class="news-stat-label">Total Groups</span>
+        </div>
+        <div class="news-stat-item">
+          <span class="news-stat-value" id="stat-students">0</span>
+          <span class="news-stat-label">Total Students</span>
+        </div>
+        <div class="news-stat-item">
+          <span class="news-stat-value" id="stat-bsit">0</span>
+          <span class="news-stat-label">BSIT Groups</span>
+        </div>
+        <div class="news-stat-item">
+          <span class="news-stat-value" id="stat-bscs">0</span>
+          <span class="news-stat-label">BSCS Groups</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="gallery-section" id="gallery">
     <div class="gallery-header">
       <div class="gallery-header-inner">
         <div class="gallery-eyebrow">
@@ -1190,94 +1363,45 @@
         </p>
       </div>
     </div>
-
-    <!-- Masonry-style photo grid -->
     <div class="gallery-grid" id="gallery-grid">
-
-      <!-- Featured / hero image — spans 2 columns -->
       <div class="gallery-item gallery-item--featured" data-index="0">
-       <img src="../assets/images/orientation/img1.jpg" ... />
-             alt="Opening of the Thesis & Capstone Title Defense Orientation"
-             loading="lazy" />
-        <div class="gallery-caption">
-          <span><i class="fas fa-camera"></i> Opening Ceremony — ComLab M-210</span>
-        </div>
+        <img src="assets/images/orientation/img1.jpg" alt="Opening of the Thesis & Capstone Title Defense Orientation" loading="lazy" />
+        <div class="gallery-caption"><span><i class="fas fa-camera"></i> Opening Ceremony — ComLab M-210</span></div>
       </div>
-
-      <!-- Standard tiles -->
       <div class="gallery-item" data-index="1">
-        <img src="../assets/images/orientation/img2.jpg"
-             alt="OIC Dean delivering welcome remarks"
-             loading="lazy" />
-        <div class="gallery-caption">
-          <span><i class="fas fa-camera"></i> Welcome Remarks — OIC Dean, CCS</span>
-        </div>
+        <img src="assets/images/orientation/img2.jpg" alt="OIC Dean delivering welcome remarks" loading="lazy" />
+        <div class="gallery-caption"><span><i class="fas fa-camera"></i> Welcome Remarks — OIC Dean, CCS</span></div>
       </div>
-
       <div class="gallery-item" data-index="2">
-        <img src="../assets/images/orientation/img3.jpg"
-             alt="CCS faculty presenting thesis vs capstone overview"
-             loading="lazy" />
-        <div class="gallery-caption">
-          <span><i class="fas fa-camera"></i> Thesis vs. Capstone Overview</span>
-        </div>
+        <img src="assets/images/orientation/img3.jpg" alt="CCS faculty presenting thesis vs capstone overview" loading="lazy" />
+        <div class="gallery-caption"><span><i class="fas fa-camera"></i> Thesis vs. Capstone Overview</span></div>
       </div>
-
       <div class="gallery-item" data-index="3">
-        <img src="../assets/images/orientation/img4.jpg"
-             alt="Documentation requirements discussion"
-             loading="lazy" />
-        <div class="gallery-caption">
-          <span><i class="fas fa-camera"></i> Documentation Requirements</span>
-        </div>
+        <img src="assets/images/orientation/img4.jpg" alt="Documentation requirements discussion" loading="lazy" />
+        <div class="gallery-caption"><span><i class="fas fa-camera"></i> Documentation Requirements</span></div>
       </div>
-
       <div class="gallery-item" data-index="4">
-        <img src="../assets/images/orientation/img5.jpg"
-             alt="Defense rubric and evaluation criteria presentation"
-             loading="lazy" />
-        <div class="gallery-caption">
-          <span><i class="fas fa-camera"></i> Defense Rubric Presentation</span>
-        </div>
+        <img src="assets/images/orientation/img5.jpg" alt="Defense rubric and evaluation criteria presentation" loading="lazy" />
+        <div class="gallery-caption"><span><i class="fas fa-camera"></i> Defense Rubric Presentation</span></div>
       </div>
-
       <div class="gallery-item" data-index="5">
-        <img src="../assets/images/orientation/img6.jpg"
-             alt="Students attentively listening during the orientation"
-             loading="lazy" />
-        <div class="gallery-caption">
-          <span><i class="fas fa-camera"></i> Students in Attendance</span>
-        </div>
+        <img src="assets/images/orientation/img6.jpg" alt="Students attentively listening during the orientation" loading="lazy" />
+        <div class="gallery-caption"><span><i class="fas fa-camera"></i> Students in Attendance</span></div>
       </div>
-
       <div class="gallery-item" data-index="6">
-        <img src="../assets/images/orientation/img7.jpg"
-             alt="Open forum and Q&A session"
-             loading="lazy" />
-        <div class="gallery-caption">
-          <span><i class="fas fa-camera"></i> Open Forum / Q&amp;A Session</span>
-        </div>
+        <img src="assets/images/orientation/img7.jpg" alt="Open forum and Q&A session" loading="lazy" />
+        <div class="gallery-caption"><span><i class="fas fa-camera"></i> Open Forum / Q&amp;A Session</span></div>
       </div>
-
       <div class="gallery-item" data-index="7">
-        <img src="../assets/images/orientation/img8.jpg"
-             alt="Group photo after orientation"
-             loading="lazy" />
-        <div class="gallery-caption">
-          <span><i class="fas fa-camera"></i> Post-Orientation Group Photo</span>
-        </div>
+        <img src="assets/images/orientation/img8.jpg" alt="Group photo after orientation" loading="lazy" />
+        <div class="gallery-caption"><span><i class="fas fa-camera"></i> Post-Orientation Group Photo</span></div>
       </div>
-
     </div>
-
-    <!-- Note about adding more photos -->
     <div class="gallery-footer-note">
       <i class="fas fa-folder-open"></i>
       Place your photos in <code>assets/images/orientation/</code> named
       <code>img1.jpg</code> through <code>img8.jpg</code> (or more — the grid auto-expands).
     </div>
-
-    <!-- Lightbox overlay -->
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
       <button class="lightbox-close" id="lb-close" aria-label="Close"><i class="fas fa-times"></i></button>
       <button class="lightbox-prev"  id="lb-prev"  aria-label="Previous photo"><i class="fas fa-chevron-left"></i></button>
@@ -1288,15 +1412,9 @@
       </div>
       <div class="lightbox-counter" id="lb-counter"></div>
     </div>
-
   </section>
 
-  <!-- ==============================
-       MAIN CONTENT
-  ============================== -->
   <main>
-
-    <!-- EVENT DETAILS STRIP -->
     <div class="details-card reveal" id="event-details">
       <div class="detail-item">
         <i class="fas fa-calendar-check"></i>
@@ -1330,7 +1448,6 @@
       </div>
     </div>
 
-    <!-- NOTICES -->
     <div class="reveal">
       <div class="notice-box danger">
         <i class="fas fa-exclamation-triangle"></i>
@@ -1352,7 +1469,6 @@
       </div>
     </div>
 
-    <!-- TWO COLUMN — About the Programs -->
     <div class="two-col reveal">
       <div class="card">
         <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
@@ -1384,7 +1500,6 @@
       </div>
     </div>
 
-    <!-- WHAT WILL BE DISCUSSED -->
     <div class="reveal" style="margin-bottom:60px;">
       <div class="section-label">Orientation Agenda</div>
       <h2 class="section-title">What Will Be Discussed</h2>
@@ -1433,7 +1548,6 @@
       </div>
     </div>
 
-    <!-- PROGRAM OF ACTIVITIES -->
     <div class="program-section reveal" id="program">
       <div class="section-label">Program of Activities</div>
       <h2 class="section-title">Orientation Program</h2>
@@ -1498,13 +1612,11 @@
       </div>
     </div>
 
-    <!-- DOCUMENTATION REQUIREMENTS -->
     <div class="reveal" id="requirements">
       <div class="section-label">What to Prepare</div>
       <h2 class="section-title">Documentation Requirements</h2>
       <div class="section-divider"></div>
       <div class="req-grid">
-
         <div class="req-card bsit">
           <h4><i class="fas fa-laptop-code"></i> Capstone Project (BSIT)</h4>
           <ul>
@@ -1516,7 +1628,6 @@
             <li>Significance of the Study</li>
           </ul>
         </div>
-
         <div class="req-card bscs">
           <h4><i class="fas fa-flask"></i> Thesis (BSCS)</h4>
           <ul>
@@ -1529,7 +1640,18 @@
             <li>Significance of the Study</li>
           </ul>
         </div>
-
+        <div class="req-card both">
+          <h4><i class="fas fa-file-alt"></i> Required Appendices (Both)</h4>
+          <ul>
+            <li>Letters of Permission</li>
+            <li>Proof of Instrument Validation</li>
+            <li>Anti-Plagiarism Certification</li>
+            <li>AI Declaration Form</li>
+            <li>Ethics Clearance Form</li>
+            <li>Financial Statement with Receipts</li>
+            <li>Curriculum Vitae (all members)</li>
+          </ul>
+        </div>
         <div class="req-card bsit" style="border-top-color:#7B1FA2;">
           <h4 style="color:#7B1FA2;"><i class="fas fa-star-of-life"></i> Evaluation Criteria</h4>
           <ul>
@@ -1540,28 +1662,18 @@
             <li>Score below 77 = for Exclusion</li>
           </ul>
         </div>
-
       </div>
     </div>
 
-    <!-- QUICK LINKS / RESOURCES -->
     <div class="resources-section reveal" id="resources">
       <div class="section-label">Quick Access</div>
       <h2 class="section-title">Resources &amp; References</h2>
       <div class="section-divider"></div>
-
       <div class="resource-links-grid">
-
-        <!-- Card 1: Title Defense Flowchart -->
-        <a class="resource-link-card"
-           href="https://uphsd-molino-ccs.github.io/UPHSD-Molino-CCS.io/thesis-capstone/title-defense-flowchart.html"
-           target="_blank"
-           rel="noopener noreferrer">
+        <a class="resource-link-card" href="https://uphsd-molino-ccs.github.io/UPHSD-Molino-CCS.io/thesis-capstone/title-defense-flowchart.html" target="_blank" rel="noopener noreferrer">
           <div class="rlc-stripe flowchart"></div>
           <div class="rlc-icon-col">
-            <div class="rlc-icon-wrap flowchart">
-              <i class="fas fa-sitemap"></i>
-            </div>
+            <div class="rlc-icon-wrap flowchart"><i class="fas fa-sitemap"></i></div>
           </div>
           <div class="rlc-body">
             <span class="rlc-tag flowchart">Visual Guide</span>
@@ -1569,22 +1681,13 @@
             <span class="rlc-desc">Step-by-step visual walkthrough of the entire title defense process — from group formation to enrollment.</span>
             <span class="rlc-url">uphsd-molino-ccs.github.io &nbsp;›&nbsp; title-defense-flowchart.html</span>
           </div>
-          <div class="rlc-arrow-col">
-            <i class="fas fa-chevron-right rlc-arrow"></i>
-          </div>
+          <div class="rlc-arrow-col"><i class="fas fa-chevron-right rlc-arrow"></i></div>
           <span class="rlc-badge">VIEW</span>
         </a>
-
-        <!-- Card 2: Document Resources (Google Drive) -->
-        <a class="resource-link-card"
-           href="https://drive.google.com/drive/folders/1PHJK9blmCCGbfms4rKnzbL6JF45d7r1A?usp=sharing"
-           target="_blank"
-           rel="noopener noreferrer">
+        <a class="resource-link-card" href="https://drive.google.com/drive/folders/1PHJK9blmCCGbfms4rKnzbL6JF45d7r1A?usp=sharing" target="_blank" rel="noopener noreferrer">
           <div class="rlc-stripe drive"></div>
           <div class="rlc-icon-col">
-            <div class="rlc-icon-wrap drive">
-              <i class="fab fa-google-drive"></i>
-            </div>
+            <div class="rlc-icon-wrap drive"><i class="fab fa-google-drive"></i></div>
           </div>
           <div class="rlc-body">
             <span class="rlc-tag drive">Google Drive</span>
@@ -1592,44 +1695,24 @@
             <span class="rlc-desc">Official forms, thesis template, rubrics, agreement forms, and all downloadable files for Thesis 1 &amp; Capstone 1.</span>
             <span class="rlc-url">drive.google.com &nbsp;›&nbsp; CCS Thesis &amp; Capstone Resources Folder</span>
           </div>
-          <div class="rlc-arrow-col">
-            <i class="fas fa-chevron-right rlc-arrow"></i>
-          </div>
+          <div class="rlc-arrow-col"><i class="fas fa-chevron-right rlc-arrow"></i></div>
           <span class="rlc-badge" style="background:var(--gold);color:var(--navy-deep);">OPEN</span>
         </a>
-
       </div>
     </div>
 
-    <!-- CTA / CONTACT -->
     <div class="cta-section reveal" id="contact">
       <h2>For Questions &amp; Inquiries</h2>
       <p>Reach out to the College of Computer Studies Department for any clarifications about the orientation or enrollment process.</p>
       <div class="contact-row">
-        <div class="contact-item">
-          <i class="fas fa-phone"></i>
-          (046) 477-0602 local 133
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-mobile-alt"></i>
-          0917-108-5707
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-envelope"></i>
-          ccs.molino@perpetualdalta.edu.ph
-        </div>
-        <div class="contact-item">
-          <i class="fab fa-facebook"></i>
-          <a href="https://www.facebook.com/perpetualmolino/" target="_blank">@perpetualmolino</a>
-        </div>
+        <div class="contact-item"><i class="fas fa-phone"></i>(046) 477-0602 local 133</div>
+        <div class="contact-item"><i class="fas fa-mobile-alt"></i>0917-108-5707</div>
+        <div class="contact-item"><i class="fas fa-envelope"></i>ccs.molino@perpetualdalta.edu.ph</div>
+        <div class="contact-item"><i class="fab fa-facebook"></i><a href="https://www.facebook.com/perpetualmolino/" target="_blank">@perpetualmolino</a></div>
       </div>
     </div>
-
   </main>
 
-  <!-- ==============================
-       FOOTER
-  ============================== -->
   <footer>
     <div class="footer-divider"></div>
     <strong>University of Perpetual Help System DALTA — Molino Campus</strong><br />
@@ -1642,39 +1725,62 @@
     </em>
   </footer>
 
-  <!-- ==============================
-       JAVASCRIPT
-  ============================== -->
   <script>
     /* -----------------------------------------------
        HAMBURGER TOGGLE
-       Toggles the mobile nav open/closed state
     ----------------------------------------------- */
     const hamburger = document.getElementById('hamburger');
     const nav = document.getElementById('main-nav');
-    const header = document.querySelector('header');
-
-    hamburger.addEventListener('click', () => {
-      nav.classList.toggle('open');
-    });
-
-    // Close nav when a link is clicked (mobile UX)
+    hamburger.addEventListener('click', () => nav.classList.toggle('open'));
     nav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => nav.classList.remove('open'));
     });
 
+    /* -----------------------------------------------
+       NEWS UPDATES STATS CALCULATOR 
+       Auto-calculates the stats banner based on the 
+       hardcoded HTML table rows so Devs don't have to 
+       update the numbers manually.
+    ----------------------------------------------- */
+    function calculateTableStats() {
+      const rows = document.querySelectorAll('#registered-groups-tbody tr');
+      
+      let totalGroups = rows.length;
+      let totalStudents = 0;
+      let bsitGroups = 0;
+      let bscsGroups = 0;
+
+      rows.forEach(row => {
+        // 1. Calculate Program Distribution
+        const program = row.getAttribute('data-program') || '';
+        if (program.toUpperCase() === 'BSIT') bsitGroups++;
+        if (program.toUpperCase() === 'BSCS') bscsGroups++;
+
+        // 2. Calculate Total Students 
+        // Counts 1 (for the PM) + the number of <li> elements in the Members column
+        // NOTE: Since we removed a column, the Members column is now the 3rd column (nth-child(3))
+        totalStudents += 1; // Project Manager
+        const memberListItems = row.querySelectorAll('td:nth-child(3) ul.member-list li');
+        totalStudents += memberListItems.length;
+      });
+
+      // Render the calculations to the DOM
+      document.getElementById('stat-groups').textContent = totalGroups;
+      document.getElementById('stat-students').textContent = totalStudents;
+      document.getElementById('stat-bsit').textContent = bsitGroups;
+      document.getElementById('stat-bscs').textContent = bscsGroups;
+    }
+
+    // Run calculator on load
+    document.addEventListener('DOMContentLoaded', calculateTableStats);
 
     /* -----------------------------------------------
        GALLERY — MISSING IMAGE FALLBACK
-       If a photo file doesn't exist yet, the tile
-       shows a friendly placeholder instead of a
-       broken image icon.
     ----------------------------------------------- */
     document.querySelectorAll('.gallery-item img').forEach(img => {
       img.addEventListener('error', function () {
         const tile = this.closest('.gallery-item');
         tile.classList.add('img-missing');
-        // Remove the broken <img> and inject placeholder markup
         this.remove();
         tile.innerHTML = `
           <div class="img-placeholder-icon"><i class="fas fa-image"></i></div>
@@ -1683,12 +1789,8 @@
       });
     });
 
-
     /* -----------------------------------------------
        LIGHTBOX
-       Click any gallery tile → opens full-size viewer.
-       Keyboard: Escape closes, ← → navigates.
-       Touch: swipe left/right navigates.
     ----------------------------------------------- */
     const lightbox   = document.getElementById('lightbox');
     const lbImg      = document.getElementById('lb-img');
@@ -1698,12 +1800,10 @@
     const lbPrev     = document.getElementById('lb-prev');
     const lbNext     = document.getElementById('lb-next');
 
-    // Collect all non-missing gallery items
     let galleryItems = [];
     let currentIndex = 0;
 
     function buildGalleryItems() {
-      // Re-query each time in case DOM changed (e.g. error replacements)
       galleryItems = Array.from(document.querySelectorAll('.gallery-item:not(.img-missing)'));
     }
 
@@ -1717,11 +1817,11 @@
 
       lbImg.src       = img ? img.src : '';
       lbImg.alt       = img ? img.alt : '';
-      lbCaption.textContent = cap.replace(/^[^\s]+\s/, ''); // strip the FA icon char
+      lbCaption.textContent = cap.replace(/^[^\s]+\s/, '');
       lbCounter.textContent = `${currentIndex + 1} / ${galleryItems.length}`;
 
       lightbox.classList.add('open');
-      document.body.style.overflow = 'hidden'; // prevent background scroll
+      document.body.style.overflow = 'hidden';
       lbClose.focus();
     }
 
@@ -1730,12 +1830,8 @@
       document.body.style.overflow = '';
     }
 
-    function navigate(dir) {
-      // dir: +1 = next, -1 = prev
-      openLightbox(currentIndex + dir);
-    }
+    function navigate(dir) { openLightbox(currentIndex + dir); }
 
-    // Attach click handlers to gallery tiles
     document.getElementById('gallery-grid').addEventListener('click', e => {
       const tile = e.target.closest('.gallery-item:not(.img-missing)');
       if (!tile) return;
@@ -1747,13 +1843,8 @@
     lbClose.addEventListener('click', closeLightbox);
     lbPrev.addEventListener('click',  () => navigate(-1));
     lbNext.addEventListener('click',  () => navigate(+1));
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 
-    // Click outside the image to close
-    lightbox.addEventListener('click', e => {
-      if (e.target === lightbox) closeLightbox();
-    });
-
-    // Keyboard navigation
     document.addEventListener('keydown', e => {
       if (!lightbox.classList.contains('open')) return;
       if (e.key === 'Escape')     closeLightbox();
@@ -1761,48 +1852,32 @@
       if (e.key === 'ArrowRight') navigate(+1);
     });
 
-    // Touch swipe support
     let touchStartX = 0;
-    lightbox.addEventListener('touchstart', e => {
-      touchStartX = e.touches[0].clientX;
-    }, { passive: true });
+    lightbox.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
     lightbox.addEventListener('touchend', e => {
       const dx = e.changedTouches[0].clientX - touchStartX;
-      if (Math.abs(dx) > 50) navigate(dx < 0 ? +1 : -1); // swipe left = next
+      if (Math.abs(dx) > 50) navigate(dx < 0 ? +1 : -1);
     }, { passive: true });
-
 
     /* -----------------------------------------------
        SCROLL REVEAL
-       Observes elements with class "reveal" and adds
-       "visible" class when they enter the viewport.
-       Uses IntersectionObserver for performance.
     ----------------------------------------------- */
     const revealEls = document.querySelectorAll('.reveal');
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          observer.unobserve(entry.target); // Only animate once
+          observer.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.1,        // Trigger when 10% of element is visible
-      rootMargin: '0px 0px -40px 0px'  // Slight bottom offset for better feel
-    });
-
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     revealEls.forEach(el => observer.observe(el));
-
 
     /* -----------------------------------------------
        SMOOTH ACTIVE NAV HIGHLIGHT
-       Highlights the nav link matching the current
-       scroll position using IntersectionObserver on sections.
     ----------------------------------------------- */
     const sections = document.querySelectorAll('main [id]');
     const navLinks = document.querySelectorAll('nav a[href^="#"]');
-
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1818,7 +1893,6 @@
         }
       });
     }, { threshold: 0.5 });
-
     sections.forEach(section => sectionObserver.observe(section));
   </script>
 
