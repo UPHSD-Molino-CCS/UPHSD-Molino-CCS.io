@@ -1,3 +1,5 @@
+html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -766,6 +768,129 @@
     }
 
     /* =============================================
+       APPROVED TOPICS SECTION
+    ============================================= */
+    .topics-section {
+      margin-top: 48px;
+      padding-top: 48px;
+      border-top: 2px dashed var(--border);
+    }
+    
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      margin-top: 28px;
+    }
+    
+    .topic-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .topic-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    
+    /* Color-coded top stripe based on program */
+    .topic-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+    
+    .topic-card.bsit::before {
+      background: linear-gradient(90deg, #1565C0, #1E88E5);
+    }
+    
+    .topic-card.bscs::before {
+      background: linear-gradient(90deg, #2E7D32, #43A047);
+    }
+    
+    /* Program badge in corner */
+    .topic-program-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 3px;
+      opacity: 0.9;
+    }
+    
+    .topic-card.bsit .topic-program-badge {
+      background: rgba(21, 101, 192, 0.12);
+      color: #1565C0;
+      border: 1px solid rgba(21, 101, 192, 0.2);
+    }
+    
+    .topic-card.bscs .topic-program-badge {
+      background: rgba(46, 125, 50, 0.12);
+      color: #2E7D32;
+      border: 1px solid rgba(46, 125, 50, 0.2);
+    }
+    
+    /* Brand name highlight */
+    .topic-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.3;
+      padding-right: 80px; /* Space for badge */
+    }
+    
+    /* Optional: highlight the brand name with a subtle background */
+    .topic-brand-highlight {
+      background: linear-gradient(120deg, var(--gold-pale) 0%, transparent 100%);
+      padding: 2px 6px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+    
+    .topic-description {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-top: 12px;
+    }
+    
+    /* Icon decoration */
+    .topic-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+    
+    .topic-card.bsit .topic-icon {
+      background: rgba(21, 101, 192, 0.08);
+      color: #1565C0;
+    }
+    
+    .topic-card.bscs .topic-icon {
+      background: rgba(46, 125, 50, 0.08);
+      color: #2E7D32;
+    }
+
+    /* =============================================
        NEWS UPDATES SECTION (HARDCODED TABLE STYLES)
     ============================================= */
     .news-updates-section {
@@ -1157,6 +1282,7 @@
       .rlc-url { display: none; }
       .news-updates-section { padding: 32px 18px; }
       .news-stats { gap: 20px; }
+      .topics-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 900px) {
       .gallery-grid {
@@ -1275,6 +1401,9 @@
     </div>
 
     <script>
+      // COUNTDOWN TIMER SCRIPT
+      // This script calculates the time remaining until the registration deadline (May 1, 2026, 11:59 PM)
+      // and updates the display every second with days, hours, minutes, and seconds remaining
       (function() {
         const countdownDate = new Date("May 1, 2026 23:59:59").getTime();
 
@@ -1282,16 +1411,19 @@
           const now = new Date().getTime();
           const distance = countdownDate - now;
 
+          // Calculate time units
           const days = Math.floor(distance / (1000 * 60 * 60 * 24));
           const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
           const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
           const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+          // Update the display with padded values (e.g., 05 instead of 5)
           document.getElementById("days").innerText = String(days).padStart(2, '0');
           document.getElementById("hours").innerText = String(hours).padStart(2, '0');
           document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
           document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
 
+          // When countdown reaches zero, stop the timer and display "Registration Closed"
           if (distance < 0) {
             clearInterval(timerInterval);
             document.getElementById("registration-countdown").innerHTML = "<h3 style='color: var(--gold);'>Registration Closed</h3>";
@@ -1376,6 +1508,18 @@
                 <ul class="member-list">
                   <li>Jeremie Joseph N. Pontiveros</li>
                   <li>Gener Lawrence R. Castaños</li>
+                </ul>
+              </td>
+            </tr>
+            
+            <tr data-program="BSIT">
+              <td>BSIT-GD</td>
+              <td>Nathan Joe A. Arce</td>
+              <td>
+                <ul class="member-list">
+                  <li>Luis Christian S De Luna</li>
+                  <li>Ruvic Christian R. Seno</li>
+                  <li>Karl Tristan D. Nepomuceno</li>
                 </ul>
               </td>
             </tr>
@@ -1754,6 +1898,177 @@
           <span class="rlc-badge" style="background:var(--gold);color:var(--navy-deep);">OPEN</span>
         </a>
       </div>
+
+      <!-- NEW SUBSECTION: APPROVED TOPICS -->
+      <div class="topics-section">
+        <div class="section-label">Graduating Class 2026</div>
+        <h2 class="section-title">Approved Capstone &amp; Thesis Topics</h2>
+        <div class="section-divider"></div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 24px;">
+          The following capstone and thesis projects have been approved for the graduating class. 
+          Each project features a unique <strong>brand name</strong> that reflects its purpose and innovation.
+        </p>
+
+        <div class="topics-grid">
+          <!-- BSIT-GD Projects -->
+          <div class="topic-card bsit">
+            <span class="topic-program-badge">BSIT-GD</span>
+            <div class="topic-icon"><i class="fas fa-gamepad"></i></div>
+            <h3 class="topic-brand">
+              <span class="topic-brand-highlight">Laro't Wika</span>
+            </h3>
+            <p class="topic-description">
+              A Quiz Game for Learning Philippine Indigenous Languages
+            </p>
+          </div>
+
+          <div class="topic-card bsit">
+            <span class="topic-program-badge">BSIT-GD</span>
+            <div class="topic-icon"><i class="fas fa-traffic-light"></i></div>
+            <h3 class="topic-brand">
+              <span class="topic-brand-highlight">Traffic Simulator</span>
+            </h3>
+            <p class="topic-description">
+              Analysis and Recommendation of Effect in Traffic Management Strategies
+            </p>
+          </div>
+
+          <div class="topic-card bsit">
+            <span class="topic-program-badge">BSIT-GD</span>
+            <div class="topic-icon"><i class="fas fa-rocket"></i></div>
+            <h3 class="topic-brand">
+              <span class="topic-brand-highlight">AscendEd: Tech Lab Breakout</span>
+            </h3>
+            <p class="topic-description">
+              A Gamified Learning Simulation for Mastering Technical Skills
+            </p>
+          </div>
+
+          <div class="topic-card bsit">
+            <span class="topic-program-badge">BSIT-GD</span>
+            <div class="topic-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3 class="topic-brand">
+              <span class="topic-brand-highlight">Truthguard</span>
+            </h3>
+            <p class="topic-description">
+              A Gamified AI-Powered Fake News Detector for Transparent Political Journalism
+            </p>
+          </div>
+
+          <div class="topic-card bsit">
+            <span class="topic-program-badge">BSIT-GD</span>
+            <div class="topic-icon"><i class="fas fa-heart"></i></div>
+            <h3 class="topic-brand">
+              <span class="topic-brand-highlight">Unicare</span>
+            </h3>
+            <p class="topic-description">
+              A Gamified Support System for Mental Health and Emotional Resilience
+            </p>
+          </div>
+
+          <div class="topic-card bsit">
+            <span class="topic-program-badge">BSIT-GD</span>
+            <div class="topic-icon"><i class="fas fa-graduation-cap"></i></div>
+            <h3 class="topic-brand">
+              <span class="topic-brand-highlight">E-ARAL</span>
+            </h3>
+            <p class="topic-description">
+              Gamified Learning App for Better Retention Using Machine Learning
+            </p>
+          </div>
+
+          <div class="topic-card bsit">
+            <span class="topic-program-badge">BSIT-GD</span>
+            <div class="topic-icon"><i class="fas fa-user-shield"></i></div>
+            <h3 class="topic-brand">
+              <span class="topic-brand-highlight">CyberQuest</span>
+            </h3>
+            <p class="topic-description">
+              A Gamified Simulation Platform for Cybersecurity Training
+            </p>
+          </div>
+
+          <div class="topic-card bsit">
+            <span class="topic-program-badge">BSIT-GD</span>
+            <div class="topic-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <h3 class="topic-brand">
+              <span class="topic-brand-highlight">Ready or Not</span>
+            </h3>
+            <p class="topic-description">
+              A Simulation Game for Enhancing Natural Disaster Readiness and Survival
+            </p>
+          </div>
+
+          <!-- BSCS-DS Projects -->
+          <div class="topic-card bscs">
+            <span class="topic-program-badge">BSCS-DS</span>
+            <div class="topic-icon"><i class="fas fa-laptop"></i></div>
+            <h3 class="topic-brand">
+              <span class="topic-brand-highlight">OFFCourse</span>
+            </h3>
+            <p class="topic-description">
+              An Offline Learning Management System for Educational Institutions equipped with Computer Laboratories but no Internet Access
+            </p>
+          </div>
+
+          <div class="topic-card bscs">
+            <span class="topic-program-badge">BSCS-DS</span>
+            <div class="topic-icon"><i class="fas fa-leaf"></i></div>
+            <h3 class="topic-brand">
+              <span class="topic-brand-highlight">Leaflens</span>
+            </h3>
+            <p class="topic-description">
+              AI-Powered Image Recognition for Native Plants
+            </p>
+          </div>
+
+          <div class="topic-card bscs">
+            <span class="topic-program-badge">BSCS-DS</span>
+            <div class="topic-icon"><i class="fas fa-link"></i></div>
+            <h3 class="topic-brand">
+              <span class="topic-brand-highlight">Block ID</span>
+            </h3>
+            <p class="topic-description">
+              Blockchain-Based Digital Identity Verification System
+            </p>
+          </div>
+
+          <div class="topic-card bscs">
+            <span class="topic-program-badge">BSCS-DS</span>
+            <div class="topic-icon"><i class="fas fa-water"></i></div>
+            <h3 class="topic-brand">
+              <span class="topic-brand-highlight">TORTOL</span>
+            </h3>
+            <p class="topic-description">
+              Enhancing Flood Management with Intelligent Early Warning System
+            </p>
+          </div>
+
+          <div class="topic-card bscs">
+            <span class="topic-program-badge">BSCS-DS</span>
+            <div class="topic-icon"><i class="fas fa-feather"></i></div>
+            <h3 class="topic-brand">
+              <span class="topic-brand-highlight">Plumatika</span>
+            </h3>
+            <p class="topic-description">
+              AI-Powered Interactive Learning for the Filipino Script
+            </p>
+          </div>
+
+          <div class="topic-card bscs">
+            <span class="topic-program-badge">BSCS-DS</span>
+            <div class="topic-icon"><i class="fas fa-code"></i></div>
+            <h3 class="topic-brand">
+              <span class="topic-brand-highlight">Sci-High</span>
+            </h3>
+            <p class="topic-description">
+              A Roguelike Approach to Learning Programming Fundamentals
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- END OF APPROVED TOPICS SUBSECTION -->
+
     </div>
 
     <div class="cta-section reveal" id="contact">
@@ -1783,6 +2098,8 @@
   <script>
     /* -----------------------------------------------
        HAMBURGER TOGGLE
+       This script toggles the mobile navigation menu when the hamburger icon is clicked.
+       It also closes the menu when any navigation link is clicked.
     ----------------------------------------------- */
     const hamburger = document.getElementById('hamburger');
     const nav = document.getElementById('main-nav');
@@ -1793,9 +2110,14 @@
 
     /* -----------------------------------------------
        NEWS UPDATES STATS CALCULATOR 
-       Auto-calculates the stats banner based on the 
-       hardcoded HTML table rows so Devs don't have to 
-       update the numbers manually.
+       This function auto-calculates statistics from the registered groups table:
+       - Total number of groups
+       - Total number of students (PM + members)
+       - Number of BSIT groups
+       - Number of BSCS groups
+       
+       It reads the data-program attribute from each table row and counts
+       the number of list items in the Members column.
     ----------------------------------------------- */
     function calculateTableStats() {
       const rows = document.querySelectorAll('#registered-groups-tbody tr');
@@ -1813,7 +2135,6 @@
 
         // 2. Calculate Total Students 
         // Counts 1 (for the PM) + the number of <li> elements in the Members column
-        // NOTE: Since we removed a column, the Members column is now the 3rd column (nth-child(3))
         totalStudents += 1; // Project Manager
         const memberListItems = row.querySelectorAll('td:nth-child(3) ul.member-list li');
         totalStudents += memberListItems.length;
@@ -1826,11 +2147,13 @@
       document.getElementById('stat-bscs').textContent = bscsGroups;
     }
 
-    // Run calculator on load
+    // Run calculator on page load
     document.addEventListener('DOMContentLoaded', calculateTableStats);
 
     /* -----------------------------------------------
        GALLERY — MISSING IMAGE FALLBACK
+       This script detects when an image fails to load and replaces it
+       with a placeholder showing the caption text
     ----------------------------------------------- */
     document.querySelectorAll('.gallery-item img').forEach(img => {
       img.addEventListener('error', function () {
@@ -1845,7 +2168,12 @@
     });
 
     /* -----------------------------------------------
-       LIGHTBOX
+       LIGHTBOX FUNCTIONALITY
+       This script manages the image lightbox/modal for the gallery:
+       - Opens when clicking a gallery item
+       - Supports keyboard navigation (left/right arrows, escape)
+       - Supports touch swipe gestures for mobile
+       - Shows image counter and caption
     ----------------------------------------------- */
     const lightbox   = document.getElementById('lightbox');
     const lbImg      = document.getElementById('lb-img');
@@ -1858,10 +2186,12 @@
     let galleryItems = [];
     let currentIndex = 0;
 
+    // Build array of valid gallery items (excluding missing images)
     function buildGalleryItems() {
       galleryItems = Array.from(document.querySelectorAll('.gallery-item:not(.img-missing)'));
     }
 
+    // Open lightbox at specific index
     function openLightbox(index) {
       buildGalleryItems();
       if (!galleryItems.length) return;
@@ -1876,17 +2206,20 @@
       lbCounter.textContent = `${currentIndex + 1} / ${galleryItems.length}`;
 
       lightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
       lbClose.focus();
     }
 
+    // Close lightbox
     function closeLightbox() {
       lightbox.classList.remove('open');
       document.body.style.overflow = '';
     }
 
+    // Navigate to previous/next image
     function navigate(dir) { openLightbox(currentIndex + dir); }
 
+    // Click handler for gallery items
     document.getElementById('gallery-grid').addEventListener('click', e => {
       const tile = e.target.closest('.gallery-item:not(.img-missing)');
       if (!tile) return;
@@ -1895,11 +2228,13 @@
       if (idx !== -1) openLightbox(idx);
     });
 
+    // Lightbox controls
     lbClose.addEventListener('click', closeLightbox);
     lbPrev.addEventListener('click',  () => navigate(-1));
     lbNext.addEventListener('click',  () => navigate(+1));
     lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 
+    // Keyboard navigation
     document.addEventListener('keydown', e => {
       if (!lightbox.classList.contains('open')) return;
       if (e.key === 'Escape')     closeLightbox();
@@ -1907,6 +2242,7 @@
       if (e.key === 'ArrowRight') navigate(+1);
     });
 
+    // Touch swipe support for mobile
     let touchStartX = 0;
     lightbox.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
     lightbox.addEventListener('touchend', e => {
@@ -1915,7 +2251,9 @@
     }, { passive: true });
 
     /* -----------------------------------------------
-       SCROLL REVEAL
+       SCROLL REVEAL ANIMATION
+       This IntersectionObserver reveals elements with the 'reveal' class
+       when they come into view during scrolling
     ----------------------------------------------- */
     const revealEls = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
@@ -1930,16 +2268,20 @@
 
     /* -----------------------------------------------
        SMOOTH ACTIVE NAV HIGHLIGHT
+       This script highlights the navigation link corresponding to
+       the currently visible section as the user scrolls
     ----------------------------------------------- */
     const sections = document.querySelectorAll('main [id]');
     const navLinks = document.querySelectorAll('nav a[href^="#"]');
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          // Remove highlight from all nav links
           navLinks.forEach(link => {
             link.style.color = '';
             link.style.borderBottomColor = '';
           });
+          // Add highlight to active section's link
           const activeLink = document.querySelector(`nav a[href="#${entry.target.id}"]`);
           if (activeLink) {
             activeLink.style.color = 'var(--gold)';
