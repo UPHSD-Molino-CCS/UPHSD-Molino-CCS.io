@@ -1387,48 +1387,145 @@
         </div>
         <h2 class="news-title">Registered Groups for Title Defense</h2>
         <p class="news-subtitle">
-          The following groups have successfully registered for the upcoming Thesis &amp; Capstone Title Defense (as of April 27, 2026) DEADLINE: MAY 1, 2026
-
-    <!-- COUNTDOWN TIMER SECTION -->
-    <div id="registration-countdown" style="text-align: center; margin: 20px 0; padding: 20px; background: var(--navy); color: var(--white); border-radius: 8px; font-family: 'DM Sans', sans-serif;">
-      <h3 style="color: var(--gold); margin-bottom: 15px; font-family: 'Playfair Display', serif;">Registration Deadline Countdown</h3>
-      <div id="timer-display" style="font-size: 2rem; font-weight: 700; letter-spacing: 2px;">
-        <span id="days">00</span>d : <span id="hours">00</span>h : <span id="minutes">00</span>m : <span id="seconds">00</span>s
+          The following groups have successfully registered for the upcoming Thesis &amp; Capstone Title Defense
+        </p>
       </div>
-      <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">Closing on May 1, 2026, at 11:59 PM</p>
-    </div>
 
-    <script>
-      // COUNTDOWN TIMER SCRIPT
-      // This script calculates the time remaining until the registration deadline (May 1, 2026, 11:59 PM)
-      // and updates the display every second with days, hours, minutes, and seconds remaining
-      (function() {
-        const countdownDate = new Date("May 1, 2026 23:59:59").getTime();
+      <!-- COUNTDOWN TIMER SECTION -->
+      <div id="defense-countdown" style="text-align: center; margin: 32px 0; padding: 32px 24px; background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-mid) 100%); color: var(--white); border-radius: 12px; font-family: 'DM Sans', sans-serif; box-shadow: var(--shadow-lg); border: 2px solid var(--gold);">
+        <div style="display: inline-block; background: rgba(212,160,23,0.15); border: 1px solid rgba(212,160,23,0.35); color: var(--gold-light); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 16px;">
+          <i class="fas fa-calendar-check" style="margin-right: 6px;"></i>
+          EVENT COUNTDOWN
+        </div>
+        <h3 style="color: var(--gold-light); margin-bottom: 8px; font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; line-height: 1.2;">Capstone and Thesis Title Defense</h3>
+        <p style="font-size: 0.95rem; opacity: 0.7; margin-bottom: 24px;">
+          <i class="fas fa-map-marker-alt" style="margin-right: 6px;"></i>
+          ComLab M-210 (BSIT) • ComLab M-209 (BSCS)
+        </p>
+        <div id="timer-display" style="font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 700; letter-spacing: 3px; margin-bottom: 16px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+          <div style="display: flex; flex-direction: column; align-items: center; min-width: 80px;">
+            <span id="days" style="color: var(--gold-light); font-family: 'Playfair Display', serif;">00</span>
+            <span style="font-size: 0.6rem; opacity: 0.6; margin-top: 4px; letter-spacing: 0.1em;">DAYS</span>
+          </div>
+          <div style="color: var(--gold); font-size: 2rem; align-self: center;">:</div>
+          <div style="display: flex; flex-direction: column; align-items: center; min-width: 80px;">
+            <span id="hours" style="color: var(--gold-light); font-family: 'Playfair Display', serif;">00</span>
+            <span style="font-size: 0.6rem; opacity: 0.6; margin-top: 4px; letter-spacing: 0.1em;">HOURS</span>
+          </div>
+          <div style="color: var(--gold); font-size: 2rem; align-self: center;">:</div>
+          <div style="display: flex; flex-direction: column; align-items: center; min-width: 80px;">
+            <span id="minutes" style="color: var(--gold-light); font-family: 'Playfair Display', serif;">00</span>
+            <span style="font-size: 0.6rem; opacity: 0.6; margin-top: 4px; letter-spacing: 0.1em;">MINUTES</span>
+          </div>
+          <div style="color: var(--gold); font-size: 2rem; align-self: center;">:</div>
+          <div style="display: flex; flex-direction: column; align-items: center; min-width: 80px;">
+            <span id="seconds" style="color: var(--gold-light); font-family: 'Playfair Display', serif;">00</span>
+            <span style="font-size: 0.6rem; opacity: 0.6; margin-top: 4px; letter-spacing: 0.1em;">SECONDS</span>
+          </div>
+        </div>
+        <p style="margin-top: 16px; font-size: 0.95rem; opacity: 0.8;">
+          <i class="fas fa-clock" style="margin-right: 6px;"></i>
+          May 11, 2026 • 8:00 AM
+        </p>
+      </div>
 
-        const timerInterval = setInterval(function() {
-          const now = new Date().getTime();
-          const distance = countdownDate - now;
+      <!-- CRITICAL DEADLINES SECTION -->
+      <div style="background: var(--white); border-radius: 12px; padding: 28px; margin: 24px 0; box-shadow: var(--shadow-md); border-left: 4px solid #DC2626;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+          <i class="fas fa-exclamation-triangle" style="color: #DC2626; font-size: 1.5rem;"></i>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--navy); margin: 0;">Critical Deadlines - May 7, 2026</h3>
+        </div>
+        <div style="display: grid; gap: 16px;">
+          <div style="display: flex; align-items: start; gap: 16px; padding: 16px; background: var(--gold-pale); border-radius: 8px; border-left: 3px solid var(--gold);">
+            <div style="background: var(--gold); color: var(--navy); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 1.1rem;">1</div>
+            <div style="flex: 1;">
+              <div style="font-weight: 700; color: var(--navy); margin-bottom: 4px; font-size: 1.05rem;">
+                <i class="fas fa-print" style="margin-right: 8px; color: var(--gold);"></i>
+                Printed Documentation
+              </div>
+              <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+                Submit <strong>three (3) title proposals</strong> Three Titles 1 Ringbound (3 copies) for each panel, printed and ring-bound per group to CCS office (Sir Val) 
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: start; gap: 16px; padding: 16px; background: var(--gold-pale); border-radius: 8px; border-left: 3px solid var(--gold);">
+            <div style="background: var(--gold); color: var(--navy); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 1.1rem;">2</div>
+            <div style="flex: 1;">
+              <div style="font-weight: 700; color: var(--navy); margin-bottom: 4px; font-size: 1.05rem;">
+                <i class="fas fa-peso-sign" style="margin-right: 8px; color: var(--gold);"></i>
+                Defense Fee Payment
+              </div>
+              <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+                Pay <strong>₱300 per member</strong> to CCS office (Ma'am Febie)
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: start; gap: 16px; padding: 16px; background: var(--gold-pale); border-radius: 8px; border-left: 3px solid var(--gold);">
+            <div style="background: var(--gold); color: var(--navy); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 1.1rem;">3</div>
+            <div style="flex: 1;">
+              <div style="font-weight: 700; color: var(--navy); margin-bottom: 4px; font-size: 1.05rem;">
+                <i class="fas fa-envelope" style="margin-right: 8px; color: var(--gold);"></i>
+                Email Submission
+              </div>
+              <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px;">
+                Send soft copies of <strong>three (3) title proposals</strong> to Sir Val
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; font-family: 'Courier New', monospace; background: var(--white); padding: 8px 12px; border-radius: 6px;">
+                <div style="color: #2563EB;">📧 valpatrick.fabregas@perpetual.edu.ph</div>
+                <div style="color: #2563EB;">📧 val.fabregas@gmail.com</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 20px; padding: 12px 16px; background: #FEE2E2; border-radius: 6px; border: 2px solid #DC2626;">
+          <div style="color: #991B1B; font-weight: 700; font-size: 0.95rem;">
+            <i class="fas fa-exclamation-circle" style="margin-right: 6px;"></i>
+            All submissions must be completed by <strong>Thursday, May 7, 2026</strong>
+          </div>
+        </div>
+      </div>
 
-          // Calculate time units
-          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      <script>
+        // COUNTDOWN TIMER SCRIPT FOR TITLE DEFENSE EVENT
+        // This script calculates the time remaining until the Title Defense (May 11, 2026, 8:00 AM)
+        // and updates the display every second with days, hours, minutes, and seconds remaining
+        (function() {
+          const countdownDate = new Date("May 11, 2026 08:00:00").getTime();
 
-          // Update the display with padded values (e.g., 05 instead of 5)
-          document.getElementById("days").innerText = String(days).padStart(2, '0');
-          document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-          document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-          document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+          const timerInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
 
-          // When countdown reaches zero, stop the timer and display "Registration Closed"
-          if (distance < 0) {
-            clearInterval(timerInterval);
-            document.getElementById("registration-countdown").innerHTML = "<h3 style='color: var(--gold);'>Registration Closed</h3>";
-          }
-        }, 1000);
-      })();
-    </script>
+            // Calculate time units
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Update the display with padded values (e.g., 05 instead of 5)
+            document.getElementById("days").innerText = String(days).padStart(2, '0');
+            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+
+            // When countdown reaches zero, stop the timer and display "Event Started"
+            if (distance < 0) {
+              clearInterval(timerInterval);
+              document.getElementById("defense-countdown").innerHTML = `
+                <div style="text-align: center; padding: 40px 20px;">
+                  <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--gold-light); margin-bottom: 16px;"></i>
+                  <h3 style='color: var(--gold-light); font-family: "Playfair Display", serif; font-size: 2rem; margin-bottom: 8px;'>Title Defense in Progress</h3>
+                  <p style='opacity: 0.8; font-size: 1rem;'>May 11, 2026 • ComLab M-210 & M-209</p>
+                </div>
+              `;
+            }
+          }, 1000);
+        })();
+      </script>
+
+      <div class="news-header" style="margin-top: 48px;">
+        <p class="news-subtitle">
+          Registered groups as of May 1, 2026
         </p>
       </div>
 
